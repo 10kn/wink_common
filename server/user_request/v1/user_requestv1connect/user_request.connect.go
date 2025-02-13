@@ -7,8 +7,8 @@ package user_requestv1connect
 import (
 	context "context"
 	errors "errors"
+	v1 "github.com/10kn/wink_common/server/user_request/v1"
 	connect_go "github.com/bufbuild/connect-go"
-	v1 "github.com/gisucoinc/ebisuiru-fc-common/server/user_request/v1"
 	http "net/http"
 	strings "strings"
 )

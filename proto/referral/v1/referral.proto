@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package referral.v1;
 
-option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/referral/v1;referralv1";
+option go_package = "github.com/10kn/wink_common/server/referral/v1;referralv1";
 
 import "google/protobuf/timestamp.proto";
 import "common/v1/paging.proto";

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package event.v1;
 
-option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/meetup_event/v1;meetupeventv1";
+option go_package = "github.com/10kn/wink_common/server/meetup_event/v1;meetupeventv1";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";

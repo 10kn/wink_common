@@ -7,8 +7,8 @@ package ageverificationv1connect
 import (
 	context "context"
 	errors "errors"
+	v1 "github.com/10kn/wink_common/server/age_verification/v1"
 	connect_go "github.com/bufbuild/connect-go"
-	v1 "github.com/gisucoinc/ebisuiru-fc-common/server/age_verification/v1"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	http "net/http"
 	strings "strings"

@@ -7,8 +7,8 @@ package referralv1connect
 import (
 	context "context"
 	errors "errors"
+	v1 "github.com/10kn/wink_common/server/referral/v1"
 	connect_go "github.com/bufbuild/connect-go"
-	v1 "github.com/gisucoinc/ebisuiru-fc-common/server/referral/v1"
 	http "net/http"
 	strings "strings"
 )

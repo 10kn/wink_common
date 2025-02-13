@@ -10,7 +10,7 @@ syntax = "proto3";
 package reportinformation.v1;
 
 // コードが自動生成されるディレクトリを指定しています。
-option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/report_information/v1;reportinformationv1";
+option go_package = "github.com/10kn/wink_common/server/report_information/v1;reportinformationv1";
 
 import "google/protobuf/empty.proto";
 import "google/type/date.proto";

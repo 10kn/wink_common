@@ -8,7 +8,7 @@ syntax = "proto3";
 
 package hobby.v1;
 
-option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/hobby/v1;hobbyv1";
+option go_package = "github.com/10kn/wink_common/server/hobby/v1;hobbyv1";
 
 // 他のパッケージのメッセージ型をインポートできます。
 // ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。

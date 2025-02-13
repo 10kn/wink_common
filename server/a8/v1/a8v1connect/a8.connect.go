@@ -7,8 +7,8 @@ package a8v1connect
 import (
 	context "context"
 	errors "errors"
+	v1 "github.com/10kn/wink_common/server/a8/v1"
 	connect_go "github.com/bufbuild/connect-go"
-	v1 "github.com/gisucoinc/ebisuiru-fc-common/server/a8/v1"
 	http "net/http"
 	strings "strings"
 )
