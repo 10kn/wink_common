@@ -10,7 +10,7 @@ syntax = "proto3";
 package notificationsettings.v1;
 
 // コードが自動生成されるディレクトリを指定しています。
-option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/notification_settings/v1;notificationsettingsv1";
+option go_package = "github.com/10kn/wink_common/server/notification_settings/v1;notificationsettingsv1";
 
 import "google/protobuf/empty.proto";
 

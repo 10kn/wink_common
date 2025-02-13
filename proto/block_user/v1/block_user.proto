@@ -10,7 +10,7 @@ syntax = "proto3";
 package blockuser.v1;
 
 // コードが自動生成されるディレクトリを指定しています。
-option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/block_user/v1;blockuserv1";
+option go_package = "github.com/10kn/wink_common/server/block_user/v1;blockuserv1";
 
 // 他のパッケージのメッセージ型をインポートできます。
 import "google/protobuf/empty.proto";

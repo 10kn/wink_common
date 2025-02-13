@@ -10,7 +10,7 @@ syntax = "proto3";
 package a8.v1;
 
 // コードが自動生成されるディレクトリを指定しています。
-option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/a8/v1;a8v1";
+option go_package = "github.com/10kn/wink_common/server/a8/v1;a8v1";
 
 service A8Service {
   rpc SubmitA8 (SubmitA8Request) returns (SubmitA8Response);

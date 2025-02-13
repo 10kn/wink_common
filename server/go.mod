@@ -1,4 +1,4 @@
-module github.com/gisucoinc/ebisuiru-fc-common/server
+module github.com/10kn/wink_common/server
 
 go 1.19
 

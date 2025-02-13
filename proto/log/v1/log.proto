@@ -5,7 +5,7 @@ syntax = "proto3";
 package log.v1;
 
 // コードが自動生成されるディレクトリを指定しています。
-option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/log/v1;logv1";
+option go_package = "github.com/10kn/wink_common/server/log/v1;logv1";
 
 // 他のパッケージのメッセージ型をインポートできます。
 // ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。

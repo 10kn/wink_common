@@ -10,7 +10,7 @@ syntax = "proto3";
 package profileimage.v1;
 
 // コードが自動生成されるディレクトリを指定しています。
-option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/profile_image/v1;profileimagev1";
+option go_package = "github.com/10kn/wink_common/server/profile_image/v1;profileimagev1";
 
 // 他のパッケージのメッセージ型をインポートできます。
 // ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
