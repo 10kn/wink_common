@@ -1,0 +1,52 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package auth.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/auth/v1;authv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "user/v1/user.proto";
+
+service AuthService {
+  // rpc SignUp(SignUpRequest) returns (google.protobuf.Empty);
+  rpc SignUp(SignUpRequest) returns (user.v1.CurrentUserResponse);
+  // rpc SignIn(SignInRequest) returns (google.protobuf.Empty);
+  rpc SignIn(SignInRequest) returns (user.v1.CurrentUserResponse);
+  rpc ExistsUserWithUid(ExistsUserWithUidRequest)
+  returns (ExistsUserWithUidResponse);
+  rpc AdminSignUp(AdminSignUpRequest) returns (google.protobuf.Empty);
+}
+
+message SignUpRequest {
+  string idToken = 1;
+}
+
+message SignInRequest {
+  string idToken = 1;
+}
+
+message ExistsUserWithUidRequest {
+  string authUid = 1;
+}
+
+message ExistsUserWithUidResponse {
+  bool exists = 1;
+}
+
+// TODO: 不要になったら削除する
+// 管理者アカウント手動作成用
+message AdminSignUpRequest {
+  string key = 1;
+  string email = 2;
+  string password = 3;
+}

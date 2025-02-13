@@ -1,0 +1,81 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package plan.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/plan/v1;planv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "profile/v1/profile.proto";
+
+service PlanService {
+  rpc GetAdminPlanCategories(google.protobuf.Empty) returns (GetAdminPlanCategoriesResponse) {}
+ 
+  rpc CreateAdminPlanCategory(CreateAdminPlanCategoryRequest) returns (CreateAdminPlanCategoryResponse) {}
+  rpc UpdateAdminPlanCategory(UpdateAdminPlanCategoryRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteAdminPlanCategories(DeleteAdminPlanCategoryRequest) returns (google.protobuf.Empty) {}
+  rpc OrderAdminPlanCategories(OrderAdminPlanCategoriesRequest) returns (google.protobuf.Empty) {}
+
+  rpc CreateAdminPlan(CreateAdminPlanRequest) returns (CreateAdminPlanResponse) {}
+  rpc UpdateAdminPlan(UpdateAdminPlanRequest) returns (UpdateAdminPlanResponse) {}
+}
+
+message GetAdminPlanCategoriesResponse {
+  repeated profile.v1.PlanCategory planCategories = 1;
+}
+
+message CreateAdminPlanCategoryRequest {
+  string name = 1;
+}
+
+message CreateAdminPlanCategoryResponse {
+  profile.v1.PlanCategory planCategory = 1;
+}
+
+message UpdateAdminPlanCategoryRequest {
+  uint32 id = 1;
+  string name = 2;
+}
+
+message DeleteAdminPlanCategoryRequest {
+  repeated uint32 planIds = 1;
+  repeated uint32 planCategoryIds = 2;
+}
+
+message CreateAdminPlanRequest {
+  string name = 1;
+  bytes image = 2;
+  uint32 categoryId = 3;
+}
+
+message CreateAdminPlanResponse {
+  profile.v1.Plan plan = 1;
+}
+
+message UpdateAdminPlanRequest {
+  uint32 id = 1;
+  string name = 2;
+  optional bytes image = 3;
+}
+
+message UpdateAdminPlanResponse {
+  profile.v1.Plan plan = 1;
+}
+
+message OrderAdminPlanCategoriesRequest {
+  repeated OrderingPlanCategory planCategories = 1;
+}
+
+message OrderingPlanCategory {
+  uint32 id = 1;
+  repeated uint32 planIds = 2;
+}

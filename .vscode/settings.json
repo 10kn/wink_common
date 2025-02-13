@@ -1,0 +1,18 @@
+{
+  "protoc": {
+    "options": ["--proto_path=${workspaceRoot}/proto"]
+  },
+  "[proto3]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "clang-format.style": "{ Language: Proto, BasedOnStyle: Google, AlignConsecutiveAssignments: true, AlignConsecutiveDeclarations: true }",
+  "cSpell.words": [
+    "ebisuiru",
+    "pbenum",
+    "pbgrpc",
+    "pbjson",
+    "proto",
+    "protobuf",
+    "protoc"
+  ]
+}

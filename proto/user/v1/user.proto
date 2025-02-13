@@ -1,0 +1,135 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package user.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/user/v1;userv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "google/type/date.proto";
+import "google/protobuf/timestamp.proto";
+import "common/v1/image_status.proto";
+import "payment/v1/payment.proto";
+
+service UserService {
+  // メタデータのauthorizationに含まれるtokenから識別したユーザーを返却する。
+  // 見つからない場合は `5: CodeNotFound` エラーを返却する。
+  rpc CurrentUser(google.protobuf.Empty) returns (CurrentUserResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc QuitUser(QuitUserRequest) returns (google.protobuf.Empty);
+  rpc GetOwnMemberStatus(google.protobuf.Empty)
+      returns (GetOwnMemberStatusResponse) {}
+  rpc GetAdminUser(GetAdminUserRequest) returns (GetAdminUserResponse) {}
+  rpc UpdateAdminUser(UpdateAdminUserRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteAdminUser(DeleteAdminUserRequest) returns (google.protobuf.Empty) {}
+  rpc GetNotificationCount(google.protobuf.Empty)
+      returns (GetNotificationCountResponse);
+}
+
+// enum
+enum RegistrationStep {
+  REGISTRATION_STEP_UNKNOWN = 0;
+  GENDER                    = 1;
+  NICKNAME                  = 2;
+  BIRTHDAY                  = 3;
+  CITY                      = 4;
+  JOB                       = 5;
+  EMAIL                     = 6;
+  IMAGE                     = 7;
+  PLAN                      = 8;
+}
+
+message CurrentUserResponse {
+  string           userId           = 1;
+  RegistrationStep registrationStep = 2;
+  UserStatus       UserStatus       = 3;
+}
+
+// enum
+enum UserStatus {
+  USER_STATUS_UNKNOWN = 0;
+  ACTIVE              = 1;
+  INACTIVE            = 2;
+  QUIT                = 3;
+}
+
+message GetUserRequest {
+  string userId = 1;
+}
+
+message GetUserResponse {
+  string     userId     = 1;
+  UserStatus userStatus = 2;
+}
+
+message QuitUserRequest {
+  string userId = 1;
+}
+
+// enum
+enum MemberStatus {
+  MEMBER_STATUS_UNKNOWN = 0;
+  FREE                  = 1;
+  PAID                  = 2;
+  WOMEN                 = 3;
+  ONE_DAY               = 4;
+  WINK_FREE             = 5;
+}
+
+message GetOwnMemberStatusResponse {
+  MemberStatus id                                       = 1;
+  string       displayName                              = 2;
+  optional payment.v1.SubscriptionPlan subscriptionPlan = 3;
+  optional google.protobuf.Timestamp currentPeriodEnd   = 4;
+  optional bool                      cancelAtPeriodEnd  = 5;
+}
+
+message GetAdminUserRequest {
+  string userId = 1;
+}
+
+message GetAdminUserResponse {
+  string                userId                   = 1;
+  string                authUid                  = 2;
+  string                stripeCustomerId         = 3;
+  UserStatus            userStatus               = 4;
+  MemberStatus          memberStatus             = 5;
+  string                phoneNumber              = 6;
+  string                familyName               = 7;
+  string                givenName                = 8;
+  uint32                freeCoin                 = 9;
+  uint32                paidCoin                 = 10;
+  common.v1.ImageStatus ageVerificationStatus    = 11;
+  optional string       ageVerificationImagePath = 12;
+  optional google.type.Date createdAt            = 13;
+  uint32                score                    = 14;
+}
+
+message UpdateAdminUserRequest {
+  string                userId       = 1;
+  optional UserStatus   userStatus   = 2;
+  optional MemberStatus memberStatus = 3;
+  optional string       familyName   = 4;
+  optional string       givenName    = 5;
+  optional uint32       freeCoin     = 6;
+  optional uint32       paidCoin     = 7;
+  optional uint32       score        = 8;
+}
+
+message DeleteAdminUserRequest {
+  string userId = 1;
+}
+
+message GetNotificationCountResponse {
+  uint32 message      = 1;
+  uint32 notification = 2;
+}

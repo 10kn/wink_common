@@ -1,0 +1,45 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package coinbalance.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/coin_balance/v1;coinbalancev1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+
+service CoinBalanceService {
+  rpc GetOwnCoinBalance(google.protobuf.Empty)
+      returns (GetOwnCoinBalanceResponse);
+}
+
+// enum
+enum CoinType {
+  COIN_TYPE_UNKNOWN = 0;
+  FREE              = 1;
+  PAID              = 2;
+}
+
+message CoinBalance {
+  CoinType coinType = 1;
+  uint32   amount   = 2;
+}
+
+message GetOwnCoinBalanceResponse {
+  repeated CoinBalance coinBalances = 1;
+}
+
+// enum
+enum CoinUsedEvent {
+  COIN_USED_EVENT_UNKNOWN = 0;
+  ONE_DAY_PLAN            = 1;
+  PARTNER_CARD_5_ADDITION = 2;
+}

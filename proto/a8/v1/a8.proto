@@ -1,0 +1,26 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package a8.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/a8/v1;a8v1";
+
+service A8Service {
+  rpc SubmitA8 (SubmitA8Request) returns (SubmitA8Response);
+}
+
+message SubmitA8Response {
+  string statusCode = 1;
+  string body = 2;
+}
+
+message SubmitA8Request {
+  string url = 1;
+}

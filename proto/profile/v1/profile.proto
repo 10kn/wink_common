@@ -1,0 +1,203 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package profile.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/profile/v1;profilev1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+
+service ProfileService {
+  rpc GetGenders(google.protobuf.Empty) returns (GetGendersResponse) {}
+  rpc GetPrefectures(google.protobuf.Empty) returns (GetPrefecturesResponse) {}
+  rpc GetCities(GetCitiesRequest) returns (GetCitiesResponse) {}
+  rpc GetJobs(google.protobuf.Empty) returns (GetJobsResponse) {}
+  rpc GetAlcohols(google.protobuf.Empty) returns (GetAlcoholsResponse) {}
+  rpc GetAnnualIncomes(google.protobuf.Empty)
+      returns (GetAnnualIncomesResponse) {}
+  rpc GetBloodTypes(google.protobuf.Empty) returns (GetBloodTypesResponse) {}
+  rpc GetCigarettes(google.protobuf.Empty) returns (GetCigarettesResponse) {}
+  rpc GetDateCosts(google.protobuf.Empty) returns (GetDateCostsResponse) {}
+  rpc GetEducationalBackgrounds(google.protobuf.Empty)
+      returns (GetEducationalBackgroundsResponse) {}
+  rpc GetHolidays(google.protobuf.Empty) returns (GetHolidaysResponse) {}
+  rpc GetHousemates(google.protobuf.Empty) returns (GetHousematesResponse) {}
+  rpc GetShapes(google.protobuf.Empty) returns (GetShapesResponse) {}
+  rpc GetPersonalities(google.protobuf.Empty)
+      returns (GetPersonalitiesResponse) {}
+  rpc GetHobbies(google.protobuf.Empty)
+      returns (GetHobbiesResponse) {}
+  rpc GetPlanCategories(google.protobuf.Empty)
+      returns (GetPlanCategoriesResponse) {}
+}
+
+message GetGendersResponse {
+  repeated Gender genders = 1;
+}
+
+message GetPrefecturesResponse {
+  repeated Prefecture prefectures = 1;
+}
+
+message GetCitiesRequest {
+  uint32 prefectureId = 1;
+}
+
+message GetCitiesResponse {
+  repeated City cities = 1;
+}
+
+message GetJobsResponse {
+  repeated Job jobs = 1;
+}
+
+message GetAlcoholsResponse {
+  repeated Alcohol alcohols = 1;
+}
+
+message GetAnnualIncomesResponse {
+  repeated AnnualIncome annualIncomes = 1;
+}
+
+message GetBloodTypesResponse {
+  repeated BloodType bloodTypes = 1;
+}
+
+message GetCigarettesResponse {
+  repeated Cigarette cigarettes = 1;
+}
+
+message GetDateCostsResponse {
+  repeated DateCost dateCosts = 1;
+}
+
+message GetEducationalBackgroundsResponse {
+  repeated EducationalBackground educationalBackgrounds = 1;
+}
+
+message GetHolidaysResponse {
+  repeated Holiday holidays = 1;
+}
+
+message GetHousematesResponse {
+  repeated Housemate housemates = 1;
+}
+
+message GetShapesResponse {
+  repeated Shape shapes = 1;
+}
+
+message GetPersonalitiesResponse {
+  repeated Personality personalities = 1;
+}
+
+message GetHobbiesResponse {
+  repeated Hobby hobbies = 1;
+}
+
+message GetPlanCategoriesResponse {
+  repeated PlanCategory planCategories = 1;
+}
+
+message Gender {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message Prefecture {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message City {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message Job {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message Alcohol {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message AnnualIncome {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message BloodType {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message Cigarette {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message DateCost {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message EducationalBackground {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message Holiday {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message Housemate {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message Shape {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message Personality {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message Hobby {
+  uint32 id   = 1;
+  string name = 2;
+}
+
+message PlanCategory {
+  uint32   id         = 1;
+  string   name       = 2;
+  repeated Plan plans = 3;
+}
+
+message Plan {
+  uint32 id        = 1;
+  string name      = 2;
+  string imagePath = 3;
+}
+
+message PlanWithMatching {
+  uint32 id         = 1;
+  string name       = 2;
+  string imagePath  = 3;
+  bool   isMatching = 4;
+}

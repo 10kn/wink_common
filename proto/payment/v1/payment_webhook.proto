@@ -1,0 +1,34 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package payment.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/payment/v1;paymentv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+service PaymentWebhookService {
+  rpc Webhook(PaymentWebhookRequest) returns (google.protobuf.Empty) {
+    // リクエストの body を丸ごと一つの変数 (payload)
+    // で受け取りたかったが上手くできなかったので、 gprc-gateway
+    // を使用することで body の内容を全て payload に入れている。
+    option (google.api.http) = {
+      post: "/api/v1/payment/webhook"
+      body: "payload"
+    };
+  };
+}
+
+message PaymentWebhookRequest {
+  bytes payload = 1;
+}

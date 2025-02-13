@@ -1,0 +1,49 @@
+{
+    "name": "ebisuiru-fc-common-container",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "common",
+    "workspaceFolder": "/ebisuiru-fc-common",
+    "extensions": [
+      "streetsidesoftware.code-spell-checker",
+      "mosapride.zenkaku",
+      "gruntfuggly.todo-tree",
+      "github.vscode-pull-request-github",
+      "mhutchie.git-graph",
+      "eamodio.gitlens",
+      "esbenp.prettier-vscode",
+      "ms-azuretools.vscode-docker",
+      "ibm.output-colorizer",
+      "bierner.markdown-preview-github-styles",
+      "cweijan.vscode-database-client2",
+      "bungcip.better-toml",
+      "golang.go",
+      "zxh404.vscode-proto3",
+      "xaver.clang-format"
+    ],
+    "settings": {
+      "editor.formatOnPaste": true,
+      "editor.wordWrap": "on",
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.minimap.enabled": false,
+      "editor.tabSize": 2,
+      "files.autoSave": "onFocusChange",
+      "files.associations": {
+        "*.json.golden": "json",
+        "golden": "json"
+      },
+      "indentRainbow.ignoreLinePatterns": ["/[ \t]* [*]/g", "/[ \t]+[/]{2}/g"],
+      "[go]": {
+        "editor.defaultFormatter": "golang.go",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false
+      },
+      "[proto3]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+      },
+      "clang-format.style": "{ Language: Proto, BasedOnStyle: Google, AlignConsecutiveAssignments: true, AlignConsecutiveDeclarations: true }"
+    },
+    "forwardPorts": [8080],
+    "shutdownAction": "none"
+  }
+  

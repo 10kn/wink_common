@@ -1,0 +1,28 @@
+version: v1
+plugins:
+  - plugin: buf.build/protocolbuffers/go:v1.28.1
+    out: server
+    opt: paths=source_relative
+  - plugin: buf.build/bufbuild/connect-go:v1.3.0
+    out: server
+    opt: paths=source_relative
+  - plugin: buf.build/grpc/go:v1.2.0
+    out: server
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false
+  - plugin: grpc-gateway
+    # 生成されるディレクトリを親ディレクトリと分けないと、循環参照エラーが発生するので paymentv1gateway ディレクトリ下にファイルを生成している。
+    # TODO: 今は payment でしか webhook を使用していないので直接ディレクトリを指定しているが、よしなに /*gateway 下に生成されるようにしたい。
+    # managed key を使用すればできるかも（参考: https://docs.buf.build/configuration/v1/buf-gen-yaml#managed）
+    out: server/payment/v1/paymentv1gateway
+    opt:
+      - paths=import
+      - module=github.com/gisucoinc/ebisuiru-fc-common/server/payment/v1
+      - standalone=true
+  # Dartの場合は"google/protobuf/empty.proto"の様なprotocに含まれているパッケージのソースも生成する必要があるが、
+  # bufでは生成できなそうなのでDartのソースはprotocで生成する。
+  # - name: dart
+  #   out: client/lib/src
+  #   opt:
+  #     - grpc

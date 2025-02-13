@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package event.v1;
+
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/event/v1;eventv1";
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/paging.proto";
+import "google/type/date.proto";
+
+service EventService {
+  rpc CreateEvent(CreateEventRequest) returns (CreateEventResponse);
+  rpc ListEvent(ListEventRequest) returns (ListEventResponse);
+  rpc UseEventCode(UseEventCodeRequest) returns (UseEventCodeResponse);
+  rpc ListUserForEvent(ListUserForEventRequest) returns (ListUserForEventResponse);
+  rpc DetailEvent(DetailEventRequest) returns (DetailEventResponse);
+  rpc ListEventForUser(ListEventForUserRequest) returns (ListEventForUserResponse);
+}
+
+message CreateEventRequest {
+  string name = 1;
+  optional string code = 2;
+  uint32 coin = 3;
+  optional uint32 limit = 4;
+  optional google.type.Date startDate = 5;
+  optional google.type.Date endDate = 6;
+}
+
+message CreateEventResponse {
+  string success = 1;
+}
+
+message Event {
+  string id = 1;
+  string name = 2;
+  string code = 3;
+  uint32 coin = 4;
+  uint32 used = 5;
+  optional uint32 limit = 6;
+  optional google.type.Date startDate = 7;
+  optional google.type.Date endDate = 8;
+  google.protobuf.Timestamp createdAt = 9;
+  google.protobuf.Timestamp updatedAt = 10;
+}
+
+message ListEventRequest {
+  optional uint32           limit    = 1;
+  optional uint32           page     = 2;
+  optional string           text     = 3;
+}
+
+message ListEventResponse {
+  repeated Event data = 1;
+  common.v1.Paging  paging = 2;
+}
+
+message UseEventCodeRequest {
+  string code = 1;
+}
+
+message UseEventCodeResponse {
+  string success = 1;
+}
+
+message UserEvent {
+  uint32 id = 1;
+  string userId = 2;
+  string nickname = 3;
+  google.protobuf.Timestamp createdAt = 4;
+}
+
+message ListUserForEventRequest {
+  optional uint32 limit = 1;
+  optional uint32 page = 2;
+  string code = 3;
+}
+
+message ListUserForEventResponse {
+  repeated UserEvent data = 1;
+  common.v1.Paging  paging = 2;
+}
+
+message DetailEventRequest {
+  string code = 1;
+}
+
+message DetailEventResponse {
+  string id = 1;
+  string name = 2;
+  string code = 3;
+  uint32 coin = 4;
+  uint32 used = 5;
+  optional uint32 limit = 6;
+  optional google.type.Date startDate = 7;
+  optional google.type.Date endDate = 8;
+  google.protobuf.Timestamp createdAt = 9;
+  google.protobuf.Timestamp updatedAt = 10;
+}
+
+message EventForUser {
+  uint32 id = 1;
+  string code = 2;
+  uint32 coin = 3;
+  google.protobuf.Timestamp createdAt = 4;
+}
+
+message ListEventForUserRequest {
+  optional uint32 limit = 1;
+  optional uint32 page = 2;
+}
+
+message ListEventForUserResponse {
+  repeated EventForUser data = 1;
+  common.v1.Paging  paging = 2;
+}

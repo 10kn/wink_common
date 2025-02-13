@@ -1,0 +1,21 @@
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package log.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/log/v1;logv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+
+service LogService {
+  rpc SendLoginLog(SendLoginLogRequest) returns (google.protobuf.Empty);
+}
+
+message SendLoginLogRequest {
+  optional double longitude = 1;
+  optional double latitude  = 2;
+}

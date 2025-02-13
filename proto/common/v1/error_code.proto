@@ -1,0 +1,35 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package common.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/common/v1;commonv1";
+
+// enum
+enum ErrorCode {
+  CodeStripeUnknown                            = 0;
+  CodeStripeAuthenticationRequired             = 1;
+  CodeStripeResourceMissing                    = 2;
+  CodeStripeResourceAlreadyExists              = 3;
+  CodeStripeRateLimit                          = 4;
+  CodeStripeEmailInvalid                       = 5;
+  CodeStripeCardDeclinedAuthenticationRequired = 6;
+  CodeStripeCardDeclinedCardNotSupported       = 7;
+  CodeStripeCardDeclinedGenericDecline         = 8;
+  CodeStripeCardDeclinedInsufficientFunds      = 9;
+  CodeStripeCardDeclinedLostCard               = 10;
+  CodeStripeCardDeclinedStolenCard             = 11;
+  CodeStripeExpiredCard                        = 12;
+  CodeStripeIncorrectCvc                       = 13;
+  CodeStripeIncorrectNumber                    = 14;
+  CodeStripeProcessingError                    = 15;
+  CodeStripeSetupIntentAuthenticationFailure   = 16;
+  CodeStripePaymentIntentAuthenticationFailure = 17;
+}

@@ -1,0 +1,186 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package payment.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/payment/v1;paymentv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "common/v1/error_code.proto";
+
+service PaymentService {
+  rpc GetCoinPlans(google.protobuf.Empty) returns (GetCoinPlansResponse);
+  rpc GetMemberPlans(google.protobuf.Empty) returns (GetMemberPlansResponse);
+  rpc GetPaymentCard(google.protobuf.Empty) returns (GetPaymentCardResponse);
+  rpc CreateSetupIntent(google.protobuf.Empty)
+      returns (CreateSetupIntentResponse);
+  rpc BuyConsumable(BuyConsumableRequest) returns (BuyConsumableResponse);
+  rpc BuyConsumableWithRegisteredMethod(
+      BuyConsumableWithRegisteredMethodRequest)
+      returns (BuyConsumableWithRegisteredMethodResponse);
+  rpc BuySubscription(BuySubscriptionRequest) returns (BuySubscriptionResponse);
+  rpc BuySubscriptionWithRegisteredMethod(
+      BuySubscriptionWithRegisteredMethodRequest)
+      returns (BuySubscriptionWithRegisteredMethodResponse);
+  rpc CancelSubscription(google.protobuf.Empty)
+      returns (CancelSubscriptionResponse);
+  rpc UpdatePaymentCard(UpdatePaymentCardRequest)
+      returns (UpdatePaymentCardResponse);
+  rpc BuyOneDayPlanWithCoin(BuyOneDayPlanWithCoinRequest)
+      returns (google.protobuf.Empty);
+}
+
+// enum
+enum ConsumablePlan {
+  CONSUMABLE_PLAN_UNKNOWN  = 0;
+  CONSUMABLE_PLAN_10_COIN = 1;
+  CONSUMABLE_PLAN_30_COIN  = 2;
+  CONSUMABLE_PLAN_100_COIN = 3;
+  CONSUMABLE_PLAN_300_COIN = 4;
+}
+
+message CoinPlan {
+  ConsumablePlan consumablePlanId = 1;
+  string         name             = 2;
+  uint32         price            = 3;
+}
+
+// enum
+enum SubscriptionPlan {
+  SUBSCRIPTION_PLAN_UNKNOWN  = 0;
+  SUBSCRIPTION_PLAN_1_MONTH  = 1;
+  SUBSCRIPTION_PLAN_3_MONTH  = 2;
+  SUBSCRIPTION_PLAN_6_MONTH  = 3;
+  SUBSCRIPTION_PLAN_12_MONTH = 4;
+}
+
+message MemberPlan {
+  SubscriptionPlan subscriptionPlanId = 1;
+  string           name               = 2;
+  uint32           price              = 3;
+}
+
+message GetCoinPlansResponse {
+  repeated CoinPlan coinPlans = 1;
+}
+
+// enum
+enum OneDayPlanEnum {
+  ONE_DAY_PLAN_UNKNOWN = 0;
+  ONE_DAY_PLAN_7_PLAN  = 1;
+}
+
+message OneDayPlan {
+  OneDayPlanEnum oneDayPlanId = 1;
+  string         name         = 2;
+  uint32         price        = 3;
+}
+
+message GetMemberPlansResponse {
+  repeated MemberPlan memberPlans = 1;
+  repeated OneDayPlan oneDayPlans = 2;
+}
+
+message PaymentCard {
+  string brand    = 1;
+  string last4    = 2;
+  string expYear  = 3;
+  string expMonth = 4;
+}
+
+message GetPaymentCardResponse {
+  optional PaymentCard paymentCard = 1;
+}
+
+message CreateSetupIntentResponse {
+  optional common.v1.ErrorCode errorCode    = 1;
+  string                       clientSecret = 2;
+}
+
+enum PaymentMethodType {
+  PAYMENT_METHOD_TYPE_UNKNOWN = 0;
+  CARD                        = 1;
+}
+
+enum PaymentIntentStatus {
+  PAYMENT_INTENT_STATUS_UNKNOWN = 0;
+  CANCELED                      = 1;
+  PROCESSING                    = 2;
+  REQUIRES_ACTION               = 3;
+  REQUIRES_CAPTURE              = 4;
+  REQUIRES_CONFIRMATION         = 5;
+  REQUIRES_PAYMENT_METHOD       = 6;
+  SUCCEEDED                     = 7;
+}
+
+message PaymentIntent {
+  PaymentIntentStatus status          = 1;
+  string              clientSecret    = 2;
+  string              paymentMethodId = 3;
+}
+
+message BuyConsumableRequest {
+  ConsumablePlan    consumablePlanId  = 1;
+  PaymentMethodType paymentMethodType = 2;
+  string            paymentMethodId   = 3;
+}
+
+message BuyConsumableResponse {
+  optional common.v1.ErrorCode errorCode     = 1;
+  PaymentIntent                paymentIntent = 2;
+}
+
+message BuyConsumableWithRegisteredMethodRequest {
+  ConsumablePlan consumablePlanId = 1;
+}
+
+message BuyConsumableWithRegisteredMethodResponse {
+  optional common.v1.ErrorCode errorCode     = 1;
+  PaymentIntent                paymentIntent = 2;
+}
+
+message BuySubscriptionRequest {
+  SubscriptionPlan  subscriptionPlanId = 1;
+  PaymentMethodType paymentMethodType  = 2;
+  string            paymentMethodId    = 3;
+}
+
+message BuySubscriptionResponse {
+  optional common.v1.ErrorCode errorCode     = 1;
+  PaymentIntent                paymentIntent = 2;
+}
+
+message BuySubscriptionWithRegisteredMethodRequest {
+  SubscriptionPlan subscriptionPlanId = 1;
+}
+
+message BuySubscriptionWithRegisteredMethodResponse {
+  optional common.v1.ErrorCode errorCode     = 1;
+  PaymentIntent                paymentIntent = 2;
+}
+
+message CancelSubscriptionResponse {
+  optional common.v1.ErrorCode errorCode = 1;
+}
+
+message UpdatePaymentCardRequest {
+  PaymentMethodType paymentMethodType = 1;
+  string            paymentMethodId   = 2;
+}
+
+message UpdatePaymentCardResponse {
+  optional common.v1.ErrorCode errorCode = 1;
+}
+
+message BuyOneDayPlanWithCoinRequest {
+  OneDayPlanEnum oneDayPlanId = 1;
+}

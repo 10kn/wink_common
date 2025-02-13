@@ -1,0 +1,43 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package blockuser.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/block_user/v1;blockuserv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+import "google/protobuf/empty.proto";
+import "profile/v1/profile.proto";
+
+service BlockUserService {
+  rpc BlockUser(BlockUserRequest) returns (google.protobuf.Empty);
+  rpc GetBlockUsers(google.protobuf.Empty) returns (GetBlockUsersResponse);
+  rpc UnblockUser(UnblockUserRequest) returns (google.protobuf.Empty);
+}
+
+message BlockUserRequest {
+  string blocked_id = 1;
+}
+
+message UnblockUserRequest {
+  string blocked_id = 1;
+}
+
+message GetBlockUsersResponse {
+  repeated BlockUser blockUser = 1;
+}
+
+message BlockUser {
+  string         userId           = 1;
+  string         nickName         = 2;
+  uint64         age              = 3;
+  string         profileImagePath = 4;
+  profile.v1.Job job              = 5;
+}

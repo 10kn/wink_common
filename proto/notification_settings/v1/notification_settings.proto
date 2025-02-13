@@ -1,0 +1,36 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package notificationsettings.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/notification_settings/v1;notificationsettingsv1";
+
+import "google/protobuf/empty.proto";
+
+service NotificationSettingsService {
+  rpc GetNotificationSettings(GetNotificationSettingsRequest)
+      returns (GetNotificationSettingsResponse) {};
+  rpc UpdateNotificationSettings(UpdateNotificationSettingsRequest)
+      returns (google.protobuf.Empty);
+}
+
+message GetNotificationSettingsRequest {}
+
+message GetNotificationSettingsResponse {
+  NotificationSettings notificationSettings = 1;
+}
+
+message UpdateNotificationSettingsRequest {
+  bool emailNotificationEnabled = 1;
+}
+
+message NotificationSettings {
+  bool emailNotificationEnabled = 1;
+}

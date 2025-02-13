@@ -1,0 +1,93 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package reportinformation.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/report_information/v1;reportinformationv1";
+
+import "google/protobuf/empty.proto";
+import "google/type/date.proto";
+import "common/v1/paging.proto";
+
+service ReportInformationService {
+  rpc SendReportInformation(SendReportInformationRequest)
+      returns (google.protobuf.Empty);
+  rpc SearchReportInformations(SearchReportInformationsRequest)
+      returns (SearchReportInformationsResponse);
+  rpc CheckReportInformation(CheckReportInformationRequest)
+      returns (google.protobuf.Empty);
+}
+
+message SendReportInformationRequest {
+  string                reportTargetUserId = 1;
+  repeated ReportReason reportReasons      = 2;
+  string                reportComment      = 3;
+}
+
+message SearchReportInformationsRequest {
+  ReportStatus    reportStatus = 1;
+  optional uint32 limit        = 2;
+  optional uint32 page         = 3;
+}
+
+message SearchReportInformationsResponse {
+  repeated SearchReportInformations data   = 1;
+  common.v1.Paging                  paging = 5;
+}
+
+message SearchReportInformations {
+  string                id               = 1;
+  string                targetImagePath  = 2;
+  string                targetUserId     = 3;
+  string                targetNickname   = 4;
+  string                reporterUserId   = 5;
+  string                reporterNickname = 6;
+  google.type.Date      reportedAt       = 7;
+  repeated ReportReason reasons          = 8;
+  string                comment          = 9;
+  ReportStatus          reportStatus     = 10;
+}
+
+message CheckReportInformationRequest {
+  string       id           = 1;
+  ReportStatus reportStatus = 2;
+}
+
+enum ReportReason {
+  REPORT_REASON_UNKNOWN = 0;
+  // 他人の写真を使用している
+  USING_OTHERS_PHOTO = 1;
+  // 顔のわかる写真が一枚もない
+  NO_FACE_PHOTO_AVAILABLE = 2;
+  //  勧誘行為
+  SOLICITATION_ACTIVITY = 3;
+  // 体目的の関係
+  SEEKING_PHYSICAL_RELATIONSHIPS = 4;
+  // マルチ商法等の商売目的
+  BUSINESS_PURPOSES_ACTIVITY = 5;
+  // 売春などの金銭目的
+  SELLING_SEX_OR_PROSTITUTION = 6;
+  // プロフィールの詐欺
+  FRAUDULENT_PROFILE_INFORMATION = 7;
+  // プロフィール内に個人情報を記載している
+  DISCLOSING_PERSONAL_INFORMATION = 8;
+  // メッセージやプロフィールでの不適切な表現
+  INAPPROPRIATE_CONTENT_OR_LANGUAGE = 9;
+  // 急なキャンセル
+  SUDDEN_CANCELLATION = 10;
+  // その他不快な行為
+  OTHER_INAPPROPRIATE_BEHAVIOR = 11;
+}
+
+enum ReportStatus {
+  REPORT_STATUS_UNKNOWN = 0;
+  UNCHECKED             = 1;
+  CHECKED               = 2;
+}

@@ -1,0 +1,390 @@
+syntax = "proto3";
+
+package event.v1;
+
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/meetup_event/v1;meetupeventv1";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "common/v1/paging.proto";
+
+service MeetupEventService {
+  rpc CreateMeetupEvent(CreateMeetupEventRequest) returns (CreateMeetupEventResponse);
+  rpc GetMeetupEvent(GetMeetupEventRequest) returns (GetMeetupEventResponse);
+  rpc UpdateMeetupEvent(UpdateMeetupEventRequest) returns (UpdateMeetupEventResponse);
+  rpc DeleteMeetupEvent(DeleteMeetupEventRequest) returns (DeleteMeetupEventResponse);
+  rpc ListMeetupEvent(ListMeetupEventRequest) returns (ListMeetupEventResponse);
+  rpc GetHashTags(google.protobuf.Empty) returns (GetHashTagsResponse);
+  rpc GetAreas(google.protobuf.Empty) returns (GetAreasResponse);
+  rpc CreatePrice(CreatePriceRequest) returns (CreatePriceResponse);
+  rpc UpdatePrice(UpdatePriceRequest) returns (UpdatePriceResponse);
+  rpc DeletePrice(DeletePriceRequest) returns (DeletePriceResponse);
+  rpc CreateDetail(CreateDetailRequest) returns (CreateDetailResponse);
+  rpc UpdateDetail(UpdateDetailRequest) returns (UpdateDetailResponse);
+  rpc DeleteDetail(DeleteDetailRequest) returns (DeleteDetailResponse);
+  rpc BookMeetupEvent(BookMeetupEventRequest) returns (BookMeetupEventResponse);
+  rpc CancelMeetupEvent(CancelMeetupEventRequest) returns (CancelMeetupEventResponse);
+  rpc ListMeetupEventAdmin(ListMeetupEventAdminRequest) returns (ListMeetupEventAdminResponse);
+  rpc GetMeetupEventAdmin(GetMeetupEventAdminRequest) returns (GetMeetupEventAdminResponse);
+  rpc GetPriceAdmin(GetPriceAdminRequest) returns (GetPriceAdminResponse);
+  rpc GetDetailAdmin(GetDetailAdminRequest) returns (GetDetailAdminResponse);
+  rpc ListDetailAdmin(ListDetailAdminRequest) returns (ListDetailAdminResponse);
+  rpc ListMeetupEventForUser(ListMeetupEventForUserRequest) returns (ListMeetupEventForUserResponse);
+  rpc ListUserBookedMeetupEvent(ListUserBookedMeetupEventRequest) returns (ListUserBookedMeetupEventResponse);
+}
+
+message CreateMeetupEventRequest {
+  uint32 areaId = 1;
+  bytes image = 2;
+  repeated CreateMeetupEventHashTag tags = 3;
+  string date = 4;
+  string description = 5;
+  string startTime = 6;
+  string endTime = 7;
+  repeated CreatePrice prices = 8;
+  //repeated Detail details = 9;
+}
+
+message CreateMeetupEventResponse {
+  string id = 1;
+}
+
+message UpdateMeetupEventRequest {
+  string id = 1;
+  optional uint32 areaId = 2;
+  optional bytes image = 3;
+  repeated CreateMeetupEventHashTag tags = 4;
+  optional string date = 5;
+  optional string description = 6;
+  optional string startTime = 7;
+  optional string endTime = 8;
+  repeated CreatePrice prices = 9;
+}
+
+message UpdateMeetupEventResponse {
+  string success = 1;
+}
+
+message DeleteMeetupEventRequest {
+  string id = 1;
+}
+
+message DeleteMeetupEventResponse {
+  string success = 1;
+}
+
+message GetMeetupEventRequest {
+  string id = 1;
+}
+
+message GetMeetupEventResponse {
+  string id = 1;
+  string area = 2;
+  repeated HashTag tags = 3;
+  string date = 4;
+  string description = 5;
+  string startTime = 6;
+  string endTime = 7;
+  repeated Price prices = 8;
+  repeated Detail details = 9;
+  string imagePath = 10;
+  bool booked = 11;
+  uint32 status = 12; 
+  google.protobuf.Timestamp createdAt = 13;
+  google.protobuf.Timestamp updatedAt = 14;
+}
+
+message ListMeetupEventRequest {
+  optional uint32 limit = 1;
+  optional uint32 page = 2;
+  optional uint32 areaId = 3;
+  optional uint32 hashTagId = 4;
+  optional string date = 5;
+  optional string suggestMeetupEventId = 6;
+}
+
+message ListMeetupEventResponse {
+  repeated MeetupEvent data = 1;
+  common.v1.Paging  paging = 2;
+}
+
+message MeetupEvent {
+  string id = 1;
+  string area = 2;
+  repeated HashTag tags = 3;
+  string date = 4;
+  string description = 5;
+  string startTime = 6;
+  string endTime = 7;
+  repeated Price prices = 8;
+  string imagePath = 9;
+  bool booked = 10;
+  uint32 status = 11; 
+  google.protobuf.Timestamp createdAt = 12;
+  google.protobuf.Timestamp updatedAt = 13;
+}
+
+message CreatePrice {
+  uint32 genderId = 2;
+  uint32 minAge = 3;
+  uint32 maxAge = 4;
+  uint32 price = 5;
+  uint32 slot = 6; 
+}
+
+message Price {
+  string id = 1;
+  uint32 genderId = 2;
+  uint32 minAge = 3;
+  uint32 maxAge = 4;
+  uint32 price = 5;
+  uint32 slot = 6; 
+}
+
+message CreateMeetupEventHashTag {
+  uint32 id = 1;
+}
+
+message HashTag {
+  uint32 id = 1;
+  string name = 2;
+}
+
+message Area {
+  uint32 id = 1;
+  string name = 2;
+}
+
+message GetHashTagsResponse {
+  repeated HashTag hashTags = 1;
+}
+
+message GetAreasResponse {
+  repeated Area areas = 1;
+}
+
+message CreatePriceRequest {
+  uint32 genderId = 1;
+  uint32 minAge = 2;
+  uint32 maxAge = 3;
+  uint32 price = 4;
+  uint32 slot = 5;
+  string meetupEventId = 6;
+}
+
+message CreatePriceResponse {
+  string id = 1;
+}
+
+message UpdatePriceRequest {
+  string id = 1;
+  optional uint32 genderId = 2;
+  optional uint32 minAge = 3;
+  optional uint32 maxAge = 4;
+  optional uint32 price = 5;
+  optional uint32 slot = 6;
+}
+
+message UpdatePriceResponse {
+  string success = 1;
+}
+
+message DeletePriceRequest {
+  string id = 1;
+}
+
+message DeletePriceResponse {
+  string success = 1;
+}
+
+message Detail {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+  repeated DetailImage images = 4;
+  uint32 order = 5;
+  bool isShownPrice = 6;
+}
+
+message DetailImage {
+  uint64 id = 1;
+  string imagePath = 2;
+}
+
+message CreateDetailRequest {
+  string meetupEventId = 1;
+  string title = 2;
+  string content = 3;
+  repeated bytes images = 4;
+  uint32 order = 5;
+  bool isShownPrice = 6;
+}
+
+message CreateDetailResponse {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+  repeated DetailImage images = 4;
+  uint32 order = 5;
+  bool isShownPrice = 6;
+}
+
+message UpdateDetailRequest {
+  string id = 1;
+  optional string title = 2;
+  optional string content = 3;
+  repeated bytes images = 4;
+  repeated uint64 deleteIds = 5;
+  optional uint32 order = 6;
+  optional bool isShownPrice = 7;
+}
+
+message UpdateDetailResponse {
+  string success = 1;
+}
+
+message DeleteDetailRequest {
+  string id = 1;
+}
+
+message DeleteDetailResponse {
+  string success = 1;
+}
+
+message BookMeetupEventRequest {
+  string meetupEventId = 1;
+  string priceId = 2;
+}
+
+message BookMeetupEventResponse {
+  string success = 1;
+}
+
+message CancelMeetupEventRequest {
+  string meetupEventId = 1;
+  string priceId = 2;
+}
+
+message CancelMeetupEventResponse {
+  string success = 1;
+}
+
+message GetMeetupEventAdminRequest {
+  string id = 1;
+}
+
+message GetMeetupEventAdminResponse {
+  string id = 1;
+  string area = 2;
+  repeated HashTag tags = 3;
+  string date = 4;
+  string description = 5;
+  string startTime = 6;
+  string endTime = 7;
+  repeated Price prices = 8;
+  repeated Detail details = 9;
+  string imagePath = 10;
+  google.protobuf.Timestamp createdAt = 11;
+  google.protobuf.Timestamp updatedAt = 12;
+}
+
+message MeetupEventAdmin {
+  string id = 1;
+  string area = 2;
+  repeated HashTag tags = 3;
+  string date = 4;
+  string description = 5;
+  string startTime = 6;
+  string endTime = 7;
+  repeated Price prices = 8;
+  string imagePath = 9;
+  bool booked = 10;
+  google.protobuf.Timestamp createdAt = 11;
+  google.protobuf.Timestamp updatedAt = 12;
+}
+
+message ListMeetupEventAdminRequest {
+  optional uint32 limit = 1;
+  optional uint32 page = 2;
+  optional uint32 areaId = 3;
+  optional uint32 hashTagId = 4;
+  optional string date = 5;
+}
+
+message ListMeetupEventAdminResponse {
+  repeated MeetupEventAdmin data = 1;
+  common.v1.Paging paging = 2;
+}
+
+message GetDetailAdminRequest {
+  string id = 1;
+}
+
+message GetDetailAdminResponse {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+  repeated DetailImage images = 4;
+  uint32 order = 5;
+  bool isShownPrice = 6;
+}
+
+message GetPriceAdminRequest {
+  string id = 1;
+}
+
+message GetPriceAdminResponse {
+  string id = 1;
+  uint32 genderId = 2;
+  uint32 minAge = 3;
+  uint32 maxAge = 4;
+  uint32 price = 5;
+  uint32 slot = 6; 
+}
+
+message ListDetailAdminRequest {
+  string meetupEventId = 1;
+}
+
+message ListDetailAdminResponse {
+  repeated DetailAdmin data = 1;
+}
+
+message DetailAdmin {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+  repeated DetailImage images = 4;
+  uint32 order = 5;
+  bool isShownPrice = 6;
+}
+
+message ListMeetupEventForUserRequest {
+  optional uint32 limit = 1;
+  optional uint32 page = 2;
+  optional uint32 areaId = 3;
+  optional uint32 hashTagId = 4;
+  optional string date = 5;
+}
+
+message ListMeetupEventForUserResponse {
+  repeated MeetupEvent data = 1;
+  common.v1.Paging  paging = 2;
+}
+
+message ListUserBookedMeetupEventRequest {
+  string meetupEventId = 1;
+  optional uint32 limit = 2;
+  optional uint32 page = 3;
+}
+
+message ListUserBookedMeetupEventResponse {
+  repeated UserInfo data = 1;
+  common.v1.Paging paging = 2;
+}
+
+message UserInfo {
+  string                    userId           = 1;
+  string                    nickName         = 2;
+  string                    profileImagePath = 3;
+}

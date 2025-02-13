@@ -1,0 +1,202 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package userprofile.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/user_profile/v1;userprofilev1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "google/type/date.proto";
+import "google/protobuf/timestamp.proto";
+import "profile/v1/profile.proto";
+import "profile_image/v1/profile_image.proto";
+import "user/v1/user.proto";
+import "common/v1/paging.proto";
+import "common/v1/image_status.proto";
+
+service UserProfileService {
+  rpc GetUserProfile(GetUserProfileRequest) returns (GetUserProfileResponse) {}
+  rpc UpdateUserProfile(UpdateUserProfileRequest)
+      returns (google.protobuf.Empty);
+  rpc GetOwnUserProfile(google.protobuf.Empty)
+      returns (GetOwnUserProfileResponse) {}
+  rpc GetAdminUserProfile(GetAdminUserProfileRequest)
+      returns (GetAdminUserProfileResponse);
+  rpc SearchAdminUserProfiles(SearchAdminUserProfilesRequest)
+      returns (SearchAdminUserProfilesResponse);
+  rpc UpdateAdminUserProfile(UpdateAdminUserProfileRequest)
+      returns (google.protobuf.Empty);
+}
+
+message GetUserProfileRequest {
+  string userId = 1;
+}
+
+message GetUserProfileResponse {
+  string                                userId                = 1;
+  profile.v1.Gender                     gender                = 2;
+  string                                nickname              = 3;
+  uint32                                age                   = 4;
+  string                                selfIntroduction      = 5;
+  profile.v1.Job                        job                   = 6;
+  profile.v1.Alcohol                    alcohol               = 7;
+  profile.v1.AnnualIncome               annualIncome          = 8;
+  profile.v1.BloodType                  bloodType             = 9;
+  profile.v1.Cigarette                  cigarette             = 10;
+  profile.v1.DateCost                   dateCost              = 11;
+  profile.v1.EducationalBackground      educationalBackground = 12;
+  profile.v1.Holiday                    holiday               = 13;
+  profile.v1.Housemate                  housemate             = 14;
+  uint32                                height                = 15;
+  profile.v1.Shape                      shape                 = 16;
+  repeated profile.v1.Personality       personalities         = 17;
+  optional google.protobuf.Timestamp    loggedinAt            = 18;
+  optional double                       latitude              = 19;
+  optional double                       longitude             = 20;
+  bool                                  newStatus             = 21;
+  repeated profile.v1.Hobby             hobbies               = 22;
+  repeated profile.v1.PlanWithMatching  plans                 = 23;
+}
+
+message UpdateUserProfileRequest {
+  string   userId                                    = 1;
+  optional user.v1.RegistrationStep registrationStep = 2;
+  optional uint32                   genderId         = 3;
+  optional string                   nickname         = 4;
+  optional google.type.Date birthday                 = 5;
+  // optional google.protobuf.Timestamp birthday = 5;
+  optional string selfIntroduction        = 6;
+  optional uint32 cityId                  = 7;
+  optional uint32 jobId                   = 8;
+  optional uint32 alcoholId               = 9;
+  optional uint32 annualIncomeId          = 10;
+  optional uint32 bloodTypeId             = 11;
+  optional uint32 cigaretteId             = 12;
+  optional uint32 dateCostId              = 13;
+  optional uint32 educationalBackgroundId = 14;
+  optional uint32 holidayId               = 15;
+  optional uint32 housemateId             = 16;
+  optional uint32 height                  = 17;
+  optional uint32 shapeId                 = 18;
+  repeated uint32 personalityIds          = 19;
+  optional string email                   = 20;
+  repeated uint32 hobbyIds                = 21;
+  repeated uint32 planIds                 = 22;
+  optional bool   firstTimeUse            = 23;
+  optional bool   hiddenSuperWink         = 24;
+}
+
+message GetOwnUserProfileResponse {
+  string            userId           = 1;
+  profile.v1.Gender gender           = 2;
+  string            nickname         = 3;
+  optional google.type.Date birthday = 4;
+  // google.protobuf.Timestamp birthday = 4;
+  string                           selfIntroduction      = 5;
+  profile.v1.Prefecture            prefecture            = 6;
+  profile.v1.City                  city                  = 7;
+  profile.v1.Job                   job                   = 8;
+  profile.v1.Alcohol               alcohol               = 9;
+  profile.v1.AnnualIncome          annualIncome          = 10;
+  profile.v1.BloodType             bloodType             = 11;
+  profile.v1.Cigarette             cigarette             = 12;
+  profile.v1.DateCost              dateCost              = 13;
+  profile.v1.EducationalBackground educationalBackground = 14;
+  profile.v1.Holiday               holiday               = 15;
+  profile.v1.Housemate             housemate             = 16;
+  uint32                           height                = 17;
+  profile.v1.Shape                 shape                 = 18;
+  repeated profile.v1.Personality personalities          = 19;
+  string                          email                  = 20;
+  uint32                          skipCardsCount         = 21;
+  uint32                          reactedCardsCount      = 22;
+  repeated profile.v1.Hobby       hobbies                = 23;
+  repeated profile.v1.Plan        plans                  = 24;
+  bool                            firstTimeUse           = 25;
+  bool                            hiddenSuperWink        = 26;
+  string                          referralCode           = 27;
+  string                          friendReferralCode     = 28;
+}
+
+message GetAdminUserProfileRequest {
+  string userId = 1;
+}
+
+message GetAdminUserProfileResponse {
+  string            userId                               = 1;
+  profile.v1.Gender gender                               = 2;
+  string            nickname                             = 3;
+  optional google.type.Date        birthday              = 4;
+  string                           selfIntroduction      = 5;
+  profile.v1.Prefecture            prefecture            = 6;
+  profile.v1.City                  city                  = 7;
+  profile.v1.Job                   job                   = 8;
+  profile.v1.Alcohol               alcohol               = 9;
+  profile.v1.AnnualIncome          annualIncome          = 10;
+  profile.v1.BloodType             bloodType             = 11;
+  profile.v1.Cigarette             cigarette             = 12;
+  profile.v1.DateCost              dateCost              = 13;
+  profile.v1.EducationalBackground educationalBackground = 14;
+  profile.v1.Holiday               holiday               = 15;
+  profile.v1.Housemate             housemate             = 16;
+  uint32                           height                = 17;
+  profile.v1.Shape                 shape                 = 18;
+  repeated profile.v1.Personality personalities          = 19;
+  string                          email                  = 20;
+  repeated profile.v1.Hobby       hobbies                = 21;
+}
+
+message SearchAdminUserProfilesRequest {
+  optional string text  = 1;
+  optional uint32 limit = 2;
+  optional uint32 page  = 3;
+}
+
+message SearchAdminUserProfilesResponse {
+  repeated SearchAdminUserProfile data   = 1;
+  common.v1.Paging                paging = 2;
+}
+
+message SearchAdminUserProfile {
+  string                       userId                = 1;
+  string                       nickname              = 2;
+  profileimage.v1.ProfileImage profileImage          = 3;
+  profile.v1.Gender            gender                = 4;
+  uint32                       age                   = 5;
+  common.v1.ImageStatus        ageVerificationStatus = 6;
+  user.v1.UserStatus           userStatus            = 7;
+  user.v1.MemberStatus         memberStatus          = 8;
+  uint32                       score                 = 9;
+}
+
+message UpdateAdminUserProfileRequest {
+  string          userId                            = 1;
+  optional uint32 genderId                          = 2;
+  optional string nickname                          = 3;
+  optional google.type.Date birthday                = 4;
+  optional string           selfIntroduction        = 5;
+  optional uint32           cityId                  = 6;
+  optional uint32           jobId                   = 7;
+  optional uint32           alcoholId               = 8;
+  optional uint32           annualIncomeId          = 9;
+  optional uint32           bloodTypeId             = 10;
+  optional uint32           cigaretteId             = 11;
+  optional uint32           dateCostId              = 12;
+  optional uint32           educationalBackgroundId = 13;
+  optional uint32           holidayId               = 14;
+  optional uint32           housemateId             = 15;
+  optional uint32           height                  = 16;
+  optional uint32           shapeId                 = 17;
+  repeated uint32           personalityIds          = 18;
+  optional string           email                   = 19;
+  repeated uint32           hobbyIds                = 20;
+}

@@ -1,0 +1,114 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package profileimage.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/profile_image/v1;profileimagev1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "user/v1/user.proto";
+import "common/v1/paging.proto";
+import "common/v1/examination_status.proto";
+import "common/v1/image_status.proto";
+
+service ProfileImageService {
+  rpc GetProfileImages(GetProfileImagesRequest)
+      returns (GetProfileImagesResponse);
+  rpc GetOwnProfileImages(google.protobuf.Empty)
+      returns (GetOwnProfileImagesResponse);
+  rpc CreateProfileImageInRegistration(CreateProfileImageInRegistrationRequest)
+      returns (google.protobuf.Empty);
+  rpc CreateProfileImage(CreateProfileImageRequest)
+      returns (google.protobuf.Empty);
+  rpc UpdateProfileImage(UpdateProfileImageRequest)
+      returns (google.protobuf.Empty);
+  rpc DeleteProfileImage(DeleteProfileImageRequest)
+      returns (google.protobuf.Empty);
+  rpc GetAdminProfileImages(GetAdminProfileImagesRequest)
+      returns (GetAdminProfileImagesResponse);
+  rpc ExamineAdminProfileImage(ExamineAdminProfileImageRequest)
+      returns (google.protobuf.Empty);
+  rpc DeleteAdminProfileImage(DeleteAdminProfileImageRequest)
+      returns (google.protobuf.Empty);
+}
+
+message GetProfileImagesRequest {
+  string userId = 1;
+}
+
+message GetProfileImagesResponse {
+  repeated ProfileImage profileImages = 1;
+}
+
+message GetOwnProfileImagesResponse {
+  repeated ProfileImage profileImages = 1;
+}
+
+// image を渡さなかった場合は、デフォルトの画像が登録される
+message CreateProfileImageInRegistrationRequest {
+  user.v1.RegistrationStep registrationStep = 1;
+  optional bytes           image            = 2;
+}
+
+message CreateProfileImageRequest {
+  uint32 order = 1;
+  bytes  image = 2;
+}
+
+message UpdateProfileImageRequest {
+  uint32 order = 1;
+  bytes  image = 2;
+}
+
+message DeleteProfileImageRequest {
+  uint32 order = 1;
+}
+
+message GetAdminProfileImagesRequest {
+  repeated common.v1.ImageStatus imageStatuses = 1;
+  optional string                userId        = 2;
+  optional uint32                limit         = 3;
+  optional uint32                page          = 4;
+}
+
+message GetAdminProfileImagesResponse {
+  repeated AdminProfileImage data   = 1;
+  common.v1.Paging           paging = 5;
+}
+
+message ExamineAdminProfileImageRequest {
+  string                      userId            = 1;
+  uint32                      order             = 2;
+  common.v1.ExaminationStatus examinationStatus = 3;
+}
+
+message DeleteAdminProfileImageRequest {
+  string userId = 1;
+  uint32 order  = 2;
+}
+
+message ProfileImage {
+  string                id          = 1;
+  uint32                order       = 2;
+  string                imagePath   = 3;
+  common.v1.ImageStatus imageStatus = 4;
+}
+
+message AdminProfileImage {
+  string                id               = 1;
+  string                userId           = 2;
+  string                nickname         = 3;
+  uint32                order            = 4;
+  string                currentImagePath = 5;
+  optional string       tmpImagePath     = 6;
+  common.v1.ImageStatus imageStatus      = 7;
+}

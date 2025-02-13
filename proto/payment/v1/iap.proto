@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package payment.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/payment/v1;paymentv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/timestamp.proto";
+import "payment/v1/payment.proto";
+import "google/protobuf/empty.proto";
+
+service IapService {
+  rpc FetchSubscriptions(google.protobuf.Empty) returns (FetchSubscriptionsResponse);
+  rpc SyncIap(google.protobuf.Empty) returns (SyncIapResponse);
+  rpc BuyConsumableIap(BuyConsumableIapRequest) returns (BuyConsumableIapResponse);
+}
+
+message FetchSubscriptionsResponse {
+  string entitlementId = 1;
+  string productId = 2;
+  bool isActive = 3;
+  google.protobuf.Timestamp endsAt = 4;
+  string periodType = 5;
+}
+
+message SyncIapResponse {
+  string userId = 1;
+}
+
+message BuyConsumableIapRequest {
+  payment.v1.ConsumablePlan consumablePlanId = 1;
+  string nonSubscriptionId = 2;
+}
+
+message BuyConsumableIapResponse {
+  bool succeeded = 1;
+}

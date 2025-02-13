@@ -1,0 +1,49 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+package hobby.v1;
+
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/hobby/v1;hobbyv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "profile/v1/profile.proto";
+
+service HobbyService {
+  rpc GetAdminHobbies(google.protobuf.Empty) returns (GetAdminHobbiesResponse) {}
+  rpc CreateAdminHobby(CreateAdminHobbyRequest) returns (CreateAdminHobbyResponse) {}
+  rpc UpdateAdminHobby(UpdateAdminHobbyRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteAdminHobby(DeleteAdminHobbyRequest) returns (google.protobuf.Empty) {}
+  rpc OrderAdminHobbies(OrderAdminHobbiesRequest) returns (google.protobuf.Empty) {}
+}
+
+message GetAdminHobbiesResponse {
+  repeated profile.v1.Hobby Hobbies = 1;
+}
+
+message CreateAdminHobbyRequest {
+  string name = 1;
+}
+
+message CreateAdminHobbyResponse {
+  profile.v1.Hobby hobby = 1;
+}
+
+message UpdateAdminHobbyRequest {
+  uint32 id = 1;
+  string name = 2;
+}
+
+message DeleteAdminHobbyRequest {
+  uint32 id = 1;
+}
+
+message OrderAdminHobbiesRequest {
+  repeated uint32 hobbyIds = 1;
+}

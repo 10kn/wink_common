@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package user_request.v1;
+
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/user_request/v1;user_requestv1";
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/paging.proto";
+
+service UserRequestAdminService {
+  rpc ListUserRequestForAdmin(ListUserRequestForAdminRequest) returns (ListUserRequestForAdminResponse);
+  rpc UpdateUserRequestForAdmin(UpdateUserRequestForAdminRequest) returns (UpdateUserRequestForAdminResponse);
+}
+
+// enum
+enum RequestStatus {
+  REQUEST_STATUS_UNKNOWN = 0;
+  PROCESSED              = 1;
+  UNPROCESSED            = 2;
+}
+
+message ListUserRequestForAdminResponse {
+  repeated Request  data   = 1;
+  common.v1.Paging  paging = 2;
+}
+
+message ListUserRequestForAdminRequest {
+  optional uint32           limit    = 1;
+  optional uint32           page     = 2;
+  optional string           text     = 3;
+}
+
+message Request {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  string inquiryContent = 4;
+  optional string contactDetails = 5;
+  RequestStatus requestStatusId = 6;
+  google.protobuf.Timestamp createdAt = 7;
+  google.protobuf.Timestamp updatedAt = 8;
+}
+
+message UpdateUserRequestForAdminRequest {
+  string requestId = 1;
+  RequestStatus requestStatusId = 2;
+}
+
+message UpdateUserRequestForAdminResponse {
+  string success = 1;
+}

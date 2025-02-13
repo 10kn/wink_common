@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package notificationimage.v1;
+
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/notification_image/v1;notificationimagev1";
+
+message NotificationImage {
+  string id = 1;
+  string imagePath = 2;
+}

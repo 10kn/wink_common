@@ -1,0 +1,116 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package card.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/card/v1;cardv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "profile/v1/profile.proto";
+import "profile_image/v1/profile_image.proto";
+
+service CardService {
+  rpc GetCards(google.protobuf.Empty) returns (GetCardsResponse);
+  rpc GetCardsForMeetupEvent(GetCardsForMeetupEventRequest) returns (GetCardsForMeetupEventResponse);
+  rpc AddCards(AddCardsRequest) returns (google.protobuf.Empty);
+  rpc CardAction(CardActionRequest) returns (CardActionResponse);
+  rpc GetCandidates(google.protobuf.Empty) returns (GetCandidatesResponse);
+  rpc GetCandidatesForMeetupEvent(GetCandidatesForMeetupEventRequest) returns (GetCandidatesForMeetupEventResponse);
+  rpc GetSuperWinkCoin(google.protobuf.Empty) returns (GetSuperWinkCoinResponse);
+  rpc GetSuperWinkUsed(google.protobuf.Empty) returns (GetSuperWinkUsedResponse);
+}
+
+message GetSuperWinkCoinResponse {
+  uint32 amount = 1;
+}
+
+message GetSuperWinkUsedResponse {
+  uint32 total = 1;
+  uint32 used = 2;
+}
+
+message GetCardsResponse {
+  repeated Card cards = 1;
+}
+
+message GetCardsForMeetupEventRequest {
+  string meetupEventId = 1;
+}
+
+message GetCardsForMeetupEventResponse {
+  repeated Card cards = 1;
+}
+
+message AddCardsRequest {
+  repeated string userIds = 1;
+}
+
+message CardActionRequest {
+  string           cardId           = 1;
+  CardActionStatus cardActionStatus = 2;
+  string           message          = 3;
+}
+
+message CardActionResponse {
+  CardActionResult cardActionResult = 1;
+} 
+
+message GetCandidatesForMeetupEventRequest {
+  string meetupEventId = 1;
+}
+
+message GetCandidatesForMeetupEventResponse {
+  repeated Candidate candidates = 1;
+}
+
+message GetCandidatesResponse {
+  repeated Candidate candidates = 1;
+}
+
+message Card {
+  string         id                                         = 1;
+  string         userId                                     = 2;
+  uint32         age                                        = 3;
+  string         nickname                                   = 4;
+  string         selfIntroduction                           = 5;
+  profile.v1.Job job                                        = 6;
+  repeated       profileimage.v1.ProfileImage profileImages = 7;
+  optional       google.protobuf.Timestamp    loggedinAt    = 8;
+  optional       double                       latitude      = 9;
+  optional       double                       longitude     = 10;
+  bool           newStatus                                  = 11;
+  repeated       profile.v1.PlanWithMatching  plans         = 12;
+}
+
+enum CardActionStatus {
+  CARD_ACTION_STATUS_UNKNOWN = 0;
+  SKIP                       = 1;
+  LIKE                       = 2;
+  TREAT                      = 3;
+  DRINK                      = 4;
+  EAT                        = 5;
+  BLOCK                      = 6;
+  SUPER_WINK                 = 7;   
+}
+
+message Candidate {
+  string                       userId       = 1;
+  profileimage.v1.ProfileImage profileImage = 2;
+}
+
+enum CardActionResult {
+  OTHER_RESULT = 0;
+	CARD_NOT_FOUND_RESULT = 1;
+	OK_RESULT = 2;
+  NOT_ENOUGH_COIN_TO_SUPER_WINK = 3;
+}

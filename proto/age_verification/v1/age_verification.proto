@@ -1,0 +1,75 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package ageverification.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/age_verification/v1;ageverificationv1";
+
+// 他のパッケージのメッセージ型をインポートできます。
+// ここではWell Known Typesと呼ばれるGoogle提供のメッセージ型を使用します。
+import "google/protobuf/empty.proto";
+import "google/type/date.proto";
+import "common/v1/paging.proto";
+import "common/v1/examination_status.proto";
+import "common/v1/image_status.proto";
+
+service AgeVerificationService {
+  // GetOwnAgeVerificationStatus は他の API
+  // のレスポンスに混ぜて一緒に返してやることになりそう。
+  rpc GetOwnAgeVerificationStatus(google.protobuf.Empty)
+      returns (GetAgeVerificationStatusResponse);
+  rpc SubmitAgeVerification(SubmitAgeVerificationRequest)
+      returns (google.protobuf.Empty);
+  rpc GetAdminAgeVerificationImages(GetAdminAgeVerificationImagesRequest)
+      returns (GetAdminAgeVerificationImagesResponse);
+  rpc ExamineAdminAgeVerification(ExamineAdminAgeVerificationRequest)
+      returns (google.protobuf.Empty);
+}
+
+message GetAgeVerificationStatusResponse {
+  common.v1.ImageStatus imageStatus = 1;
+}
+
+message SubmitAgeVerificationRequest {
+  bytes            image      = 1;
+  google.type.Date birthday   = 2;
+  string           familyName = 3;
+  string           givenName  = 4;
+}
+
+message GetAdminAgeVerificationImagesRequest {
+  optional uint32 limit = 1;
+  optional uint32 page  = 2;
+}
+
+message GetAdminAgeVerificationImagesResponse {
+  repeated AdminAgeVerificationImage data   = 1;
+  common.v1.Paging                   paging = 5;
+}
+
+message AdminAgeVerificationImage {
+  string   id                                        = 1;
+  string   userId                                    = 2;
+  string   nickname                                  = 3;
+  string   profileImagePath                          = 4;
+  string   familyName                                = 5;
+  string   givenName                                 = 6;
+  string   gender                                    = 7;
+  string   prefecture                                = 8;
+  string   city                                      = 9;
+  optional google.type.Date birthday                 = 10;
+  uint32                    age                      = 11;
+  string                    ageVerificationImagePath = 12;
+}
+
+message ExamineAdminAgeVerificationRequest {
+  string                      userId            = 1;
+  common.v1.ExaminationStatus examinationStatus = 2;
+}

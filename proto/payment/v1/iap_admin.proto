@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package payment.v1;
+
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/payment/v1;paymentv1";
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/paging.proto";
+
+service IapAdminService {
+  rpc ListSubscription(ListSubscriptionAdminRequest) returns (ListSubscriptionAdminResponse);
+  rpc ListNonSubscription(ListNonSubscriptionAdminRequest) returns (ListNonSubscriptionAdminResponse);
+}
+
+message ListSubscriptionAdminRequest {
+  optional uint32           limit    = 1;
+  optional uint32           page     = 2;
+  optional string           text     = 3;
+}
+
+message ListSubscriptionAdminResponse {
+  repeated Subscription data   = 1;
+  common.v1.Paging  paging = 2;
+}
+
+message Subscription {
+  string id = 1;
+  string nickname = 2;
+  string email = 3;
+  string entitlementId = 4;
+  string productId = 5;
+  string status = 6;
+  google.protobuf.Timestamp endsAt = 7;
+  google.protobuf.Timestamp purchasedAt = 8;
+  google.protobuf.Timestamp originalPurchasedAt = 9;
+  string store = 10;
+  string periodType = 11;
+  string userId = 12;
+  google.protobuf.Timestamp createdAt = 13;
+  google.protobuf.Timestamp updatedAt = 14;
+}
+
+message ListNonSubscriptionAdminRequest {
+  optional uint32           limit    = 1;
+  optional uint32           page     = 2;
+  optional string           text     = 3;
+}
+
+message ListNonSubscriptionAdminResponse {
+  repeated NonSubscription data   = 1;
+  common.v1.Paging  paging = 2;
+}
+
+message NonSubscription {
+  string id = 1;
+  string nickname = 2;
+  string email = 3;
+  string productId = 4;
+  string nonSubscriptionId = 5;
+  uint64 amount = 6;
+  google.protobuf.Timestamp purchasedAt = 7;
+  string store = 8;
+  string userId = 9;
+  google.protobuf.Timestamp createdAt = 10;
+  google.protobuf.Timestamp updatedAt = 11;
+}

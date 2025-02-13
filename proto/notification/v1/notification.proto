@@ -1,0 +1,92 @@
+// 参考
+// https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/proto
+// https://dev.classmethod.jp/articles/golang-grpc-sample-project/
+//
+
+// protoのバージョンです。
+syntax = "proto3";
+
+// メッセージ型などの名前の衝突を避けるためにパッケージ名を指定します。
+package notification.v1;
+
+// コードが自動生成されるディレクトリを指定しています。
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/notification/v1;notificationv1";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "common/v1/paging.proto";
+import "notification_image/v1/notification_image.proto";
+
+service NotificationService {
+  rpc SendNotification(SendNotificationRequest) returns (google.protobuf.Empty);
+  rpc GetNotifications(GetNotificationsRequest)
+      returns (GetNotificationsResponse) {};
+  rpc GetNotification(GetNotificationRequest) returns (GetNotificationResponse) {};
+  rpc SearchNotifications(SearchNotificationsRequest)
+      returns (SearchNotificationsResponse) {};
+  rpc GetNotificationCategories(google.protobuf.Empty)
+      returns (GetNotificationCategoriesResponse) {};
+}
+
+message SendNotificationRequest {
+  string           title            = 1;
+  string           message          = 2;
+  uint64 notificationCategoryId     = 3;
+  NotificationType notificationType = 4;
+  optional string  userId           = 5;
+  repeated bytes   images           = 6;
+}
+
+message GetNotificationsRequest {}
+
+message GetNotificationsResponse {
+  repeated Notification notifications = 1;
+}
+
+message GetNotificationRequest {
+  string notificationId = 1;
+}
+
+message GetNotificationResponse {
+  Notification notification = 1;
+}
+
+// 管理画面から呼ぶ
+message SearchNotificationsRequest {
+  NotificationType notificationType = 1;
+  optional uint32  limit            = 2;
+  optional uint32  page             = 3;
+  optional string  userId           = 4;
+}
+
+message SearchNotificationsResponse {
+  repeated Notification notifications = 1;
+  common.v1.Paging      paging        = 2;
+}
+
+message Notification {
+  string                      id                                      = 1;
+  string                      title                                   = 2;
+  string                      message                                 = 3;
+  uint64                      notificationCategoryId                  = 4;    
+  string                      notificationCategoryName                = 5;        
+  repeated notificationimage.v1.NotificationImage  notificationImages = 6;
+  google.protobuf.Timestamp   createdAt                               = 7;
+}
+
+enum NotificationType {
+  UNKNOWN  = 0;
+  ALL      = 1;
+  MEN      = 2;
+  WOMEN    = 3;
+  PERSONAL = 4;
+}
+
+message GetNotificationCategoriesResponse {
+  repeated NotificationCategory notificationCategories = 1;
+}
+
+message NotificationCategory {
+  uint64 id   = 1;
+  string name = 2;
+}

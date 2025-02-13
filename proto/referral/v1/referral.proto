@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package referral.v1;
+
+option go_package = "github.com/gisucoinc/ebisuiru-fc-common/server/referral/v1;referralv1";
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/paging.proto";
+
+service ReferralService {
+  rpc ListReferralCode(ListReferralCodeRequest) returns (ListReferralCodeResponse);
+  rpc UpdateFriendReferralCode(UpdateFriendReferralCodeRequest) returns (UpdateFriendReferralCodeResponse);
+  rpc ListUserForReferral(ListUserForReferralRequest) returns (ListUserForReferralResponse);
+  rpc DetailReferral(DetailReferralRequest) returns (DetailReferralResponse);
+}
+
+message Referral {
+  string id = 1;
+  string referralCode = 2;
+  string userId = 3;
+  uint64 usageCount = 4;
+  uint64 coinCount = 5;
+  string nickname = 6;
+  google.protobuf.Timestamp createdAt = 7;
+  google.protobuf.Timestamp updatedAt = 8;
+}
+
+message ListReferralCodeRequest {
+  optional uint32           limit    = 1;
+  optional uint32           page     = 2;
+  optional string           text     = 3;
+}
+
+message ListReferralCodeResponse {
+  repeated Referral data = 1;
+  common.v1.Paging  paging = 2;
+}
+
+message UpdateFriendReferralCodeRequest {
+  string code = 1;
+}
+
+message UpdateFriendReferralCodeResponse {
+  string success = 1;
+}
+
+message UserReferralCode {
+  string userId = 1;
+  string nickname = 2;
+  google.protobuf.Timestamp friendCreatedAt = 3;
+}
+
+message ListUserForReferralRequest {
+  optional uint32 limit = 1;
+  optional uint32 page = 2;
+  string code = 3;
+}
+
+message ListUserForReferralResponse {
+  repeated UserReferralCode data = 1;
+  common.v1.Paging  paging = 2;
+}
+
+message DetailReferralRequest {
+  string code = 1;
+}
+
+message DetailReferralResponse {
+  string id = 1;
+  string referralCode = 2;
+  string userId = 3;
+  uint64 usageCount = 4;
+  uint64 coinCount = 5;
+  string nickname = 6;
+  google.protobuf.Timestamp createdAt = 7;
+  google.protobuf.Timestamp updatedAt = 8;
+}
