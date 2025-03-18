@@ -749,3 +749,58 @@ const UserInfo$json = const {
 
 /// Descriptor for `UserInfo`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List userInfoDescriptor = $convert.base64Decode('CghVc2VySW5mbxIWCgZ1c2VySWQYASABKAlSBnVzZXJJZBIaCghuaWNrTmFtZRgCIAEoCVIIbmlja05hbWUSKgoQcHJvZmlsZUltYWdlUGF0aBgDIAEoCVIQcHJvZmlsZUltYWdlUGF0aA==');
+@$core.Deprecated('Use sendMeetupEventMessageRequestDescriptor instead')
+const SendMeetupEventMessageRequest$json = const {
+  '1': 'SendMeetupEventMessageRequest',
+  '2': const [
+    const {'1': 'meetupEventId', '3': 1, '4': 1, '5': 9, '10': 'meetupEventId'},
+    const {'1': 'text', '3': 2, '4': 1, '5': 9, '10': 'text'},
+  ],
+};
+
+/// Descriptor for `SendMeetupEventMessageRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendMeetupEventMessageRequestDescriptor = $convert.base64Decode('Ch1TZW5kTWVldHVwRXZlbnRNZXNzYWdlUmVxdWVzdBIkCg1tZWV0dXBFdmVudElkGAEgASgJUg1tZWV0dXBFdmVudElkEhIKBHRleHQYAiABKAlSBHRleHQ=');
+@$core.Deprecated('Use sendMeetupEventMessageResponseDescriptor instead')
+const SendMeetupEventMessageResponse$json = const {
+  '1': 'SendMeetupEventMessageResponse',
+  '2': const [
+    const {'1': 'success', '3': 1, '4': 1, '5': 9, '10': 'success'},
+  ],
+};
+
+/// Descriptor for `SendMeetupEventMessageResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sendMeetupEventMessageResponseDescriptor = $convert.base64Decode('Ch5TZW5kTWVldHVwRXZlbnRNZXNzYWdlUmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCVIHc3VjY2Vzcw==');
+@$core.Deprecated('Use getMeetupEventMessagesRequestDescriptor instead')
+const GetMeetupEventMessagesRequest$json = const {
+  '1': 'GetMeetupEventMessagesRequest',
+  '2': const [
+    const {'1': 'meetupEventId', '3': 1, '4': 1, '5': 9, '10': 'meetupEventId'},
+  ],
+};
+
+/// Descriptor for `GetMeetupEventMessagesRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getMeetupEventMessagesRequestDescriptor = $convert.base64Decode('Ch1HZXRNZWV0dXBFdmVudE1lc3NhZ2VzUmVxdWVzdBIkCg1tZWV0dXBFdmVudElkGAEgASgJUg1tZWV0dXBFdmVudElk');
+@$core.Deprecated('Use getMeetupEventMessagesResponseDescriptor instead')
+const GetMeetupEventMessagesResponse$json = const {
+  '1': 'GetMeetupEventMessagesResponse',
+  '2': const [
+    const {'1': 'messages', '3': 1, '4': 3, '5': 11, '6': '.event.v1.MeetupEventMessage', '10': 'messages'},
+  ],
+};
+
+/// Descriptor for `GetMeetupEventMessagesResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getMeetupEventMessagesResponseDescriptor = $convert.base64Decode('Ch5HZXRNZWV0dXBFdmVudE1lc3NhZ2VzUmVzcG9uc2USOAoIbWVzc2FnZXMYASADKAsyHC5ldmVudC52MS5NZWV0dXBFdmVudE1lc3NhZ2VSCG1lc3NhZ2Vz');
+@$core.Deprecated('Use meetupEventMessageDescriptor instead')
+const MeetupEventMessage$json = const {
+  '1': 'MeetupEventMessage',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'senderId', '3': 2, '4': 1, '5': 9, '10': 'senderId'},
+    const {'1': 'meetupEventId', '3': 3, '4': 1, '5': 9, '10': 'meetupEventId'},
+    const {'1': 'text', '3': 4, '4': 1, '5': 9, '10': 'text'},
+    const {'1': 'sentAt', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'sentAt'},
+  ],
+};
+
+/// Descriptor for `MeetupEventMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List meetupEventMessageDescriptor = $convert.base64Decode('ChJNZWV0dXBFdmVudE1lc3NhZ2USDgoCaWQYASABKAlSAmlkEhoKCHNlbmRlcklkGAIgASgJUghzZW5kZXJJZBIkCg1tZWV0dXBFdmVudElkGAMgASgJUg1tZWV0dXBFdmVudElkEhIKBHRleHQYBCABKAlSBHRleHQSMgoGc2VudEF0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIGc2VudEF0');

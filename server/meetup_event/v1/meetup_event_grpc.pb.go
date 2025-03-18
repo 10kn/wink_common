@@ -45,6 +45,8 @@ type MeetupEventServiceClient interface {
 	ListDetailAdmin(ctx context.Context, in *ListDetailAdminRequest, opts ...grpc.CallOption) (*ListDetailAdminResponse, error)
 	ListMeetupEventForUser(ctx context.Context, in *ListMeetupEventForUserRequest, opts ...grpc.CallOption) (*ListMeetupEventForUserResponse, error)
 	ListUserBookedMeetupEvent(ctx context.Context, in *ListUserBookedMeetupEventRequest, opts ...grpc.CallOption) (*ListUserBookedMeetupEventResponse, error)
+	GetMeetupEventMessages(ctx context.Context, in *GetMeetupEventMessagesRequest, opts ...grpc.CallOption) (*GetMeetupEventMessagesResponse, error)
+	SendMeetupEventMessage(ctx context.Context, in *SendMeetupEventMessageRequest, opts ...grpc.CallOption) (*SendMeetupEventMessageResponse, error)
 }
 
 type meetupEventServiceClient struct {
@@ -253,6 +255,24 @@ func (c *meetupEventServiceClient) ListUserBookedMeetupEvent(ctx context.Context
 	return out, nil
 }
 
+func (c *meetupEventServiceClient) GetMeetupEventMessages(ctx context.Context, in *GetMeetupEventMessagesRequest, opts ...grpc.CallOption) (*GetMeetupEventMessagesResponse, error) {
+	out := new(GetMeetupEventMessagesResponse)
+	err := c.cc.Invoke(ctx, "/event.v1.MeetupEventService/GetMeetupEventMessages", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *meetupEventServiceClient) SendMeetupEventMessage(ctx context.Context, in *SendMeetupEventMessageRequest, opts ...grpc.CallOption) (*SendMeetupEventMessageResponse, error) {
+	out := new(SendMeetupEventMessageResponse)
+	err := c.cc.Invoke(ctx, "/event.v1.MeetupEventService/SendMeetupEventMessage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MeetupEventServiceServer is the server API for MeetupEventService service.
 // All implementations should embed UnimplementedMeetupEventServiceServer
 // for forward compatibility
@@ -279,6 +299,8 @@ type MeetupEventServiceServer interface {
 	ListDetailAdmin(context.Context, *ListDetailAdminRequest) (*ListDetailAdminResponse, error)
 	ListMeetupEventForUser(context.Context, *ListMeetupEventForUserRequest) (*ListMeetupEventForUserResponse, error)
 	ListUserBookedMeetupEvent(context.Context, *ListUserBookedMeetupEventRequest) (*ListUserBookedMeetupEventResponse, error)
+	GetMeetupEventMessages(context.Context, *GetMeetupEventMessagesRequest) (*GetMeetupEventMessagesResponse, error)
+	SendMeetupEventMessage(context.Context, *SendMeetupEventMessageRequest) (*SendMeetupEventMessageResponse, error)
 }
 
 // UnimplementedMeetupEventServiceServer should be embedded to have forward compatible implementations.
@@ -350,6 +372,12 @@ func (UnimplementedMeetupEventServiceServer) ListMeetupEventForUser(context.Cont
 }
 func (UnimplementedMeetupEventServiceServer) ListUserBookedMeetupEvent(context.Context, *ListUserBookedMeetupEventRequest) (*ListUserBookedMeetupEventResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUserBookedMeetupEvent not implemented")
+}
+func (UnimplementedMeetupEventServiceServer) GetMeetupEventMessages(context.Context, *GetMeetupEventMessagesRequest) (*GetMeetupEventMessagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMeetupEventMessages not implemented")
+}
+func (UnimplementedMeetupEventServiceServer) SendMeetupEventMessage(context.Context, *SendMeetupEventMessageRequest) (*SendMeetupEventMessageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendMeetupEventMessage not implemented")
 }
 
 // UnsafeMeetupEventServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -759,6 +787,42 @@ func _MeetupEventService_ListUserBookedMeetupEvent_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MeetupEventService_GetMeetupEventMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMeetupEventMessagesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MeetupEventServiceServer).GetMeetupEventMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/event.v1.MeetupEventService/GetMeetupEventMessages",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MeetupEventServiceServer).GetMeetupEventMessages(ctx, req.(*GetMeetupEventMessagesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MeetupEventService_SendMeetupEventMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendMeetupEventMessageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MeetupEventServiceServer).SendMeetupEventMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/event.v1.MeetupEventService/SendMeetupEventMessage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MeetupEventServiceServer).SendMeetupEventMessage(ctx, req.(*SendMeetupEventMessageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // MeetupEventService_ServiceDesc is the grpc.ServiceDesc for MeetupEventService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -853,6 +917,14 @@ var MeetupEventService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListUserBookedMeetupEvent",
 			Handler:    _MeetupEventService_ListUserBookedMeetupEvent_Handler,
+		},
+		{
+			MethodName: "GetMeetupEventMessages",
+			Handler:    _MeetupEventService_GetMeetupEventMessages_Handler,
+		},
+		{
+			MethodName: "SendMeetupEventMessage",
+			Handler:    _MeetupEventService_SendMeetupEventMessage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
