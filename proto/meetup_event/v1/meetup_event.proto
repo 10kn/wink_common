@@ -42,7 +42,10 @@ message CreateMeetupEventRequest {
   string startTime = 6;
   string endTime = 7;
   repeated CreatePrice prices = 8;
-  //repeated Detail details = 9;
+  double latitude = 9;
+  double longitude = 10;
+  string address = 11;
+  //repeated Detail details = 12;
 }
 
 message CreateMeetupEventResponse {
@@ -59,6 +62,9 @@ message UpdateMeetupEventRequest {
   optional string startTime = 7;
   optional string endTime = 8;
   repeated CreatePrice prices = 9;
+  optional double latitude = 10;
+  optional double longitude = 11;
+  optional string address = 12;
 }
 
 message UpdateMeetupEventResponse {
@@ -89,9 +95,12 @@ message GetMeetupEventResponse {
   repeated Detail details = 9;
   string imagePath = 10;
   bool booked = 11;
-  uint32 status = 12; 
-  google.protobuf.Timestamp createdAt = 13;
-  google.protobuf.Timestamp updatedAt = 14;
+  uint32 status = 12;
+  double latitude = 13;
+  double longitude = 14;
+  string address = 15;
+  google.protobuf.Timestamp createdAt = 16;
+  google.protobuf.Timestamp updatedAt = 17;
 }
 
 message ListMeetupEventRequest {
@@ -119,9 +128,12 @@ message MeetupEvent {
   repeated Price prices = 8;
   string imagePath = 9;
   bool booked = 10;
-  uint32 status = 11; 
-  google.protobuf.Timestamp createdAt = 12;
-  google.protobuf.Timestamp updatedAt = 13;
+  uint32 status = 11;
+  double latitude = 12;
+  double longitude = 13;
+  string address = 14;
+  google.protobuf.Timestamp createdAt = 15;
+  google.protobuf.Timestamp updatedAt = 16;
 }
 
 message CreatePrice {
@@ -284,8 +296,11 @@ message GetMeetupEventAdminResponse {
   repeated Price prices = 8;
   repeated Detail details = 9;
   string imagePath = 10;
-  google.protobuf.Timestamp createdAt = 11;
-  google.protobuf.Timestamp updatedAt = 12;
+  double latitude = 11;
+  double longitude = 12;
+  string address = 13;
+  google.protobuf.Timestamp createdAt = 14;
+  google.protobuf.Timestamp updatedAt = 15;
 }
 
 message MeetupEventAdmin {
@@ -299,8 +314,11 @@ message MeetupEventAdmin {
   repeated Price prices = 8;
   string imagePath = 9;
   bool booked = 10;
-  google.protobuf.Timestamp createdAt = 11;
-  google.protobuf.Timestamp updatedAt = 12;
+  double latitude = 11;
+  double longitude = 12;
+  string address = 13;
+  google.protobuf.Timestamp createdAt = 14;
+  google.protobuf.Timestamp updatedAt = 15;
 }
 
 message ListMeetupEventAdminRequest {

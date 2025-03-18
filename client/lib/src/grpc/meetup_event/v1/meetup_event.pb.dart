@@ -23,6 +23,9 @@ class CreateMeetupEventRequest extends $pb.GeneratedMessage {
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTime', protoName: 'startTime')
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endTime', protoName: 'endTime')
     ..pc<CreatePrice>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'prices', $pb.PbFieldType.PM, subBuilder: CreatePrice.create)
+    ..a<$core.double>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'latitude', $pb.PbFieldType.OD)
+    ..a<$core.double>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longitude', $pb.PbFieldType.OD)
+    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
     ..hasRequiredFields = false
   ;
 
@@ -36,6 +39,9 @@ class CreateMeetupEventRequest extends $pb.GeneratedMessage {
     $core.String? startTime,
     $core.String? endTime,
     $core.Iterable<CreatePrice>? prices,
+    $core.double? latitude,
+    $core.double? longitude,
+    $core.String? address,
   }) {
     final _result = create();
     if (areaId != null) {
@@ -61,6 +67,15 @@ class CreateMeetupEventRequest extends $pb.GeneratedMessage {
     }
     if (prices != null) {
       _result.prices.addAll(prices);
+    }
+    if (latitude != null) {
+      _result.latitude = latitude;
+    }
+    if (longitude != null) {
+      _result.longitude = longitude;
+    }
+    if (address != null) {
+      _result.address = address;
     }
     return _result;
   }
@@ -144,6 +159,33 @@ class CreateMeetupEventRequest extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(8)
   $core.List<CreatePrice> get prices => $_getList(7);
+
+  @$pb.TagNumber(9)
+  $core.double get latitude => $_getN(8);
+  @$pb.TagNumber(9)
+  set latitude($core.double v) { $_setDouble(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasLatitude() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearLatitude() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.double get longitude => $_getN(9);
+  @$pb.TagNumber(10)
+  set longitude($core.double v) { $_setDouble(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasLongitude() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearLongitude() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.String get address => $_getSZ(10);
+  @$pb.TagNumber(11)
+  set address($core.String v) { $_setString(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasAddress() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearAddress() => clearField(11);
 }
 
 class CreateMeetupEventResponse extends $pb.GeneratedMessage {
@@ -204,6 +246,9 @@ class UpdateMeetupEventRequest extends $pb.GeneratedMessage {
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTime', protoName: 'startTime')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endTime', protoName: 'endTime')
     ..pc<CreatePrice>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'prices', $pb.PbFieldType.PM, subBuilder: CreatePrice.create)
+    ..a<$core.double>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'latitude', $pb.PbFieldType.OD)
+    ..a<$core.double>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longitude', $pb.PbFieldType.OD)
+    ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
     ..hasRequiredFields = false
   ;
 
@@ -218,6 +263,9 @@ class UpdateMeetupEventRequest extends $pb.GeneratedMessage {
     $core.String? startTime,
     $core.String? endTime,
     $core.Iterable<CreatePrice>? prices,
+    $core.double? latitude,
+    $core.double? longitude,
+    $core.String? address,
   }) {
     final _result = create();
     if (id != null) {
@@ -246,6 +294,15 @@ class UpdateMeetupEventRequest extends $pb.GeneratedMessage {
     }
     if (prices != null) {
       _result.prices.addAll(prices);
+    }
+    if (latitude != null) {
+      _result.latitude = latitude;
+    }
+    if (longitude != null) {
+      _result.longitude = longitude;
+    }
+    if (address != null) {
+      _result.address = address;
     }
     return _result;
   }
@@ -338,6 +395,33 @@ class UpdateMeetupEventRequest extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(9)
   $core.List<CreatePrice> get prices => $_getList(8);
+
+  @$pb.TagNumber(10)
+  $core.double get latitude => $_getN(9);
+  @$pb.TagNumber(10)
+  set latitude($core.double v) { $_setDouble(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasLatitude() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearLatitude() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.double get longitude => $_getN(10);
+  @$pb.TagNumber(11)
+  set longitude($core.double v) { $_setDouble(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasLongitude() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearLongitude() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.String get address => $_getSZ(11);
+  @$pb.TagNumber(12)
+  set address($core.String v) { $_setString(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasAddress() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearAddress() => clearField(12);
 }
 
 class UpdateMeetupEventResponse extends $pb.GeneratedMessage {
@@ -542,8 +626,11 @@ class GetMeetupEventResponse extends $pb.GeneratedMessage {
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imagePath', protoName: 'imagePath')
     ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'booked')
     ..a<$core.int>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OU3)
-    ..aOM<$33.Timestamp>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
-    ..aOM<$33.Timestamp>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
+    ..a<$core.double>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'latitude', $pb.PbFieldType.OD)
+    ..a<$core.double>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longitude', $pb.PbFieldType.OD)
+    ..aOS(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
+    ..aOM<$33.Timestamp>(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
+    ..aOM<$33.Timestamp>(17, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -561,6 +648,9 @@ class GetMeetupEventResponse extends $pb.GeneratedMessage {
     $core.String? imagePath,
     $core.bool? booked,
     $core.int? status,
+    $core.double? latitude,
+    $core.double? longitude,
+    $core.String? address,
     $33.Timestamp? createdAt,
     $33.Timestamp? updatedAt,
   }) {
@@ -600,6 +690,15 @@ class GetMeetupEventResponse extends $pb.GeneratedMessage {
     }
     if (status != null) {
       _result.status = status;
+    }
+    if (latitude != null) {
+      _result.latitude = latitude;
+    }
+    if (longitude != null) {
+      _result.longitude = longitude;
+    }
+    if (address != null) {
+      _result.address = address;
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
@@ -721,26 +820,53 @@ class GetMeetupEventResponse extends $pb.GeneratedMessage {
   void clearStatus() => clearField(12);
 
   @$pb.TagNumber(13)
-  $33.Timestamp get createdAt => $_getN(12);
+  $core.double get latitude => $_getN(12);
   @$pb.TagNumber(13)
-  set createdAt($33.Timestamp v) { setField(13, v); }
+  set latitude($core.double v) { $_setDouble(12, v); }
   @$pb.TagNumber(13)
-  $core.bool hasCreatedAt() => $_has(12);
+  $core.bool hasLatitude() => $_has(12);
   @$pb.TagNumber(13)
-  void clearCreatedAt() => clearField(13);
-  @$pb.TagNumber(13)
-  $33.Timestamp ensureCreatedAt() => $_ensure(12);
+  void clearLatitude() => clearField(13);
 
   @$pb.TagNumber(14)
-  $33.Timestamp get updatedAt => $_getN(13);
+  $core.double get longitude => $_getN(13);
   @$pb.TagNumber(14)
-  set updatedAt($33.Timestamp v) { setField(14, v); }
+  set longitude($core.double v) { $_setDouble(13, v); }
   @$pb.TagNumber(14)
-  $core.bool hasUpdatedAt() => $_has(13);
+  $core.bool hasLongitude() => $_has(13);
   @$pb.TagNumber(14)
-  void clearUpdatedAt() => clearField(14);
-  @$pb.TagNumber(14)
-  $33.Timestamp ensureUpdatedAt() => $_ensure(13);
+  void clearLongitude() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $core.String get address => $_getSZ(14);
+  @$pb.TagNumber(15)
+  set address($core.String v) { $_setString(14, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasAddress() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearAddress() => clearField(15);
+
+  @$pb.TagNumber(16)
+  $33.Timestamp get createdAt => $_getN(15);
+  @$pb.TagNumber(16)
+  set createdAt($33.Timestamp v) { setField(16, v); }
+  @$pb.TagNumber(16)
+  $core.bool hasCreatedAt() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearCreatedAt() => clearField(16);
+  @$pb.TagNumber(16)
+  $33.Timestamp ensureCreatedAt() => $_ensure(15);
+
+  @$pb.TagNumber(17)
+  $33.Timestamp get updatedAt => $_getN(16);
+  @$pb.TagNumber(17)
+  set updatedAt($33.Timestamp v) { setField(17, v); }
+  @$pb.TagNumber(17)
+  $core.bool hasUpdatedAt() => $_has(16);
+  @$pb.TagNumber(17)
+  void clearUpdatedAt() => clearField(17);
+  @$pb.TagNumber(17)
+  $33.Timestamp ensureUpdatedAt() => $_ensure(16);
 }
 
 class ListMeetupEventRequest extends $pb.GeneratedMessage {
@@ -930,8 +1056,11 @@ class MeetupEvent extends $pb.GeneratedMessage {
     ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imagePath', protoName: 'imagePath')
     ..aOB(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'booked')
     ..a<$core.int>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status', $pb.PbFieldType.OU3)
-    ..aOM<$33.Timestamp>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
-    ..aOM<$33.Timestamp>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
+    ..a<$core.double>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'latitude', $pb.PbFieldType.OD)
+    ..a<$core.double>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longitude', $pb.PbFieldType.OD)
+    ..aOS(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
+    ..aOM<$33.Timestamp>(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
+    ..aOM<$33.Timestamp>(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -948,6 +1077,9 @@ class MeetupEvent extends $pb.GeneratedMessage {
     $core.String? imagePath,
     $core.bool? booked,
     $core.int? status,
+    $core.double? latitude,
+    $core.double? longitude,
+    $core.String? address,
     $33.Timestamp? createdAt,
     $33.Timestamp? updatedAt,
   }) {
@@ -984,6 +1116,15 @@ class MeetupEvent extends $pb.GeneratedMessage {
     }
     if (status != null) {
       _result.status = status;
+    }
+    if (latitude != null) {
+      _result.latitude = latitude;
+    }
+    if (longitude != null) {
+      _result.longitude = longitude;
+    }
+    if (address != null) {
+      _result.address = address;
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
@@ -1102,26 +1243,53 @@ class MeetupEvent extends $pb.GeneratedMessage {
   void clearStatus() => clearField(11);
 
   @$pb.TagNumber(12)
-  $33.Timestamp get createdAt => $_getN(11);
+  $core.double get latitude => $_getN(11);
   @$pb.TagNumber(12)
-  set createdAt($33.Timestamp v) { setField(12, v); }
+  set latitude($core.double v) { $_setDouble(11, v); }
   @$pb.TagNumber(12)
-  $core.bool hasCreatedAt() => $_has(11);
+  $core.bool hasLatitude() => $_has(11);
   @$pb.TagNumber(12)
-  void clearCreatedAt() => clearField(12);
-  @$pb.TagNumber(12)
-  $33.Timestamp ensureCreatedAt() => $_ensure(11);
+  void clearLatitude() => clearField(12);
 
   @$pb.TagNumber(13)
-  $33.Timestamp get updatedAt => $_getN(12);
+  $core.double get longitude => $_getN(12);
   @$pb.TagNumber(13)
-  set updatedAt($33.Timestamp v) { setField(13, v); }
+  set longitude($core.double v) { $_setDouble(12, v); }
   @$pb.TagNumber(13)
-  $core.bool hasUpdatedAt() => $_has(12);
+  $core.bool hasLongitude() => $_has(12);
   @$pb.TagNumber(13)
-  void clearUpdatedAt() => clearField(13);
-  @$pb.TagNumber(13)
-  $33.Timestamp ensureUpdatedAt() => $_ensure(12);
+  void clearLongitude() => clearField(13);
+
+  @$pb.TagNumber(14)
+  $core.String get address => $_getSZ(13);
+  @$pb.TagNumber(14)
+  set address($core.String v) { $_setString(13, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasAddress() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearAddress() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $33.Timestamp get createdAt => $_getN(14);
+  @$pb.TagNumber(15)
+  set createdAt($33.Timestamp v) { setField(15, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasCreatedAt() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearCreatedAt() => clearField(15);
+  @$pb.TagNumber(15)
+  $33.Timestamp ensureCreatedAt() => $_ensure(14);
+
+  @$pb.TagNumber(16)
+  $33.Timestamp get updatedAt => $_getN(15);
+  @$pb.TagNumber(16)
+  set updatedAt($33.Timestamp v) { setField(16, v); }
+  @$pb.TagNumber(16)
+  $core.bool hasUpdatedAt() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearUpdatedAt() => clearField(16);
+  @$pb.TagNumber(16)
+  $33.Timestamp ensureUpdatedAt() => $_ensure(15);
 }
 
 class CreatePrice extends $pb.GeneratedMessage {
@@ -2946,8 +3114,11 @@ class GetMeetupEventAdminResponse extends $pb.GeneratedMessage {
     ..pc<Price>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'prices', $pb.PbFieldType.PM, subBuilder: Price.create)
     ..pc<Detail>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'details', $pb.PbFieldType.PM, subBuilder: Detail.create)
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imagePath', protoName: 'imagePath')
-    ..aOM<$33.Timestamp>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
-    ..aOM<$33.Timestamp>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
+    ..a<$core.double>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'latitude', $pb.PbFieldType.OD)
+    ..a<$core.double>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longitude', $pb.PbFieldType.OD)
+    ..aOS(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
+    ..aOM<$33.Timestamp>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
+    ..aOM<$33.Timestamp>(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -2963,6 +3134,9 @@ class GetMeetupEventAdminResponse extends $pb.GeneratedMessage {
     $core.Iterable<Price>? prices,
     $core.Iterable<Detail>? details,
     $core.String? imagePath,
+    $core.double? latitude,
+    $core.double? longitude,
+    $core.String? address,
     $33.Timestamp? createdAt,
     $33.Timestamp? updatedAt,
   }) {
@@ -2996,6 +3170,15 @@ class GetMeetupEventAdminResponse extends $pb.GeneratedMessage {
     }
     if (imagePath != null) {
       _result.imagePath = imagePath;
+    }
+    if (latitude != null) {
+      _result.latitude = latitude;
+    }
+    if (longitude != null) {
+      _result.longitude = longitude;
+    }
+    if (address != null) {
+      _result.address = address;
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
@@ -3099,26 +3282,53 @@ class GetMeetupEventAdminResponse extends $pb.GeneratedMessage {
   void clearImagePath() => clearField(10);
 
   @$pb.TagNumber(11)
-  $33.Timestamp get createdAt => $_getN(10);
+  $core.double get latitude => $_getN(10);
   @$pb.TagNumber(11)
-  set createdAt($33.Timestamp v) { setField(11, v); }
+  set latitude($core.double v) { $_setDouble(10, v); }
   @$pb.TagNumber(11)
-  $core.bool hasCreatedAt() => $_has(10);
+  $core.bool hasLatitude() => $_has(10);
   @$pb.TagNumber(11)
-  void clearCreatedAt() => clearField(11);
-  @$pb.TagNumber(11)
-  $33.Timestamp ensureCreatedAt() => $_ensure(10);
+  void clearLatitude() => clearField(11);
 
   @$pb.TagNumber(12)
-  $33.Timestamp get updatedAt => $_getN(11);
+  $core.double get longitude => $_getN(11);
   @$pb.TagNumber(12)
-  set updatedAt($33.Timestamp v) { setField(12, v); }
+  set longitude($core.double v) { $_setDouble(11, v); }
   @$pb.TagNumber(12)
-  $core.bool hasUpdatedAt() => $_has(11);
+  $core.bool hasLongitude() => $_has(11);
   @$pb.TagNumber(12)
-  void clearUpdatedAt() => clearField(12);
-  @$pb.TagNumber(12)
-  $33.Timestamp ensureUpdatedAt() => $_ensure(11);
+  void clearLongitude() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.String get address => $_getSZ(12);
+  @$pb.TagNumber(13)
+  set address($core.String v) { $_setString(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasAddress() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearAddress() => clearField(13);
+
+  @$pb.TagNumber(14)
+  $33.Timestamp get createdAt => $_getN(13);
+  @$pb.TagNumber(14)
+  set createdAt($33.Timestamp v) { setField(14, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasCreatedAt() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearCreatedAt() => clearField(14);
+  @$pb.TagNumber(14)
+  $33.Timestamp ensureCreatedAt() => $_ensure(13);
+
+  @$pb.TagNumber(15)
+  $33.Timestamp get updatedAt => $_getN(14);
+  @$pb.TagNumber(15)
+  set updatedAt($33.Timestamp v) { setField(15, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasUpdatedAt() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearUpdatedAt() => clearField(15);
+  @$pb.TagNumber(15)
+  $33.Timestamp ensureUpdatedAt() => $_ensure(14);
 }
 
 class MeetupEventAdmin extends $pb.GeneratedMessage {
@@ -3133,8 +3343,11 @@ class MeetupEventAdmin extends $pb.GeneratedMessage {
     ..pc<Price>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'prices', $pb.PbFieldType.PM, subBuilder: Price.create)
     ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'imagePath', protoName: 'imagePath')
     ..aOB(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'booked')
-    ..aOM<$33.Timestamp>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
-    ..aOM<$33.Timestamp>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
+    ..a<$core.double>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'latitude', $pb.PbFieldType.OD)
+    ..a<$core.double>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longitude', $pb.PbFieldType.OD)
+    ..aOS(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
+    ..aOM<$33.Timestamp>(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
+    ..aOM<$33.Timestamp>(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -3150,6 +3363,9 @@ class MeetupEventAdmin extends $pb.GeneratedMessage {
     $core.Iterable<Price>? prices,
     $core.String? imagePath,
     $core.bool? booked,
+    $core.double? latitude,
+    $core.double? longitude,
+    $core.String? address,
     $33.Timestamp? createdAt,
     $33.Timestamp? updatedAt,
   }) {
@@ -3183,6 +3399,15 @@ class MeetupEventAdmin extends $pb.GeneratedMessage {
     }
     if (booked != null) {
       _result.booked = booked;
+    }
+    if (latitude != null) {
+      _result.latitude = latitude;
+    }
+    if (longitude != null) {
+      _result.longitude = longitude;
+    }
+    if (address != null) {
+      _result.address = address;
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
@@ -3292,26 +3517,53 @@ class MeetupEventAdmin extends $pb.GeneratedMessage {
   void clearBooked() => clearField(10);
 
   @$pb.TagNumber(11)
-  $33.Timestamp get createdAt => $_getN(10);
+  $core.double get latitude => $_getN(10);
   @$pb.TagNumber(11)
-  set createdAt($33.Timestamp v) { setField(11, v); }
+  set latitude($core.double v) { $_setDouble(10, v); }
   @$pb.TagNumber(11)
-  $core.bool hasCreatedAt() => $_has(10);
+  $core.bool hasLatitude() => $_has(10);
   @$pb.TagNumber(11)
-  void clearCreatedAt() => clearField(11);
-  @$pb.TagNumber(11)
-  $33.Timestamp ensureCreatedAt() => $_ensure(10);
+  void clearLatitude() => clearField(11);
 
   @$pb.TagNumber(12)
-  $33.Timestamp get updatedAt => $_getN(11);
+  $core.double get longitude => $_getN(11);
   @$pb.TagNumber(12)
-  set updatedAt($33.Timestamp v) { setField(12, v); }
+  set longitude($core.double v) { $_setDouble(11, v); }
   @$pb.TagNumber(12)
-  $core.bool hasUpdatedAt() => $_has(11);
+  $core.bool hasLongitude() => $_has(11);
   @$pb.TagNumber(12)
-  void clearUpdatedAt() => clearField(12);
-  @$pb.TagNumber(12)
-  $33.Timestamp ensureUpdatedAt() => $_ensure(11);
+  void clearLongitude() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.String get address => $_getSZ(12);
+  @$pb.TagNumber(13)
+  set address($core.String v) { $_setString(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasAddress() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearAddress() => clearField(13);
+
+  @$pb.TagNumber(14)
+  $33.Timestamp get createdAt => $_getN(13);
+  @$pb.TagNumber(14)
+  set createdAt($33.Timestamp v) { setField(14, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasCreatedAt() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearCreatedAt() => clearField(14);
+  @$pb.TagNumber(14)
+  $33.Timestamp ensureCreatedAt() => $_ensure(13);
+
+  @$pb.TagNumber(15)
+  $33.Timestamp get updatedAt => $_getN(14);
+  @$pb.TagNumber(15)
+  set updatedAt($33.Timestamp v) { setField(15, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasUpdatedAt() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearUpdatedAt() => clearField(15);
+  @$pb.TagNumber(15)
+  $33.Timestamp ensureUpdatedAt() => $_ensure(14);
 }
 
 class ListMeetupEventAdminRequest extends $pb.GeneratedMessage {

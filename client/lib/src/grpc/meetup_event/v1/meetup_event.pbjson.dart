@@ -20,11 +20,14 @@ const CreateMeetupEventRequest$json = const {
     const {'1': 'startTime', '3': 6, '4': 1, '5': 9, '10': 'startTime'},
     const {'1': 'endTime', '3': 7, '4': 1, '5': 9, '10': 'endTime'},
     const {'1': 'prices', '3': 8, '4': 3, '5': 11, '6': '.event.v1.CreatePrice', '10': 'prices'},
+    const {'1': 'latitude', '3': 9, '4': 1, '5': 1, '10': 'latitude'},
+    const {'1': 'longitude', '3': 10, '4': 1, '5': 1, '10': 'longitude'},
+    const {'1': 'address', '3': 11, '4': 1, '5': 9, '10': 'address'},
   ],
 };
 
 /// Descriptor for `CreateMeetupEventRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createMeetupEventRequestDescriptor = $convert.base64Decode('ChhDcmVhdGVNZWV0dXBFdmVudFJlcXVlc3QSFgoGYXJlYUlkGAEgASgNUgZhcmVhSWQSFAoFaW1hZ2UYAiABKAxSBWltYWdlEjYKBHRhZ3MYAyADKAsyIi5ldmVudC52MS5DcmVhdGVNZWV0dXBFdmVudEhhc2hUYWdSBHRhZ3MSEgoEZGF0ZRgEIAEoCVIEZGF0ZRIgCgtkZXNjcmlwdGlvbhgFIAEoCVILZGVzY3JpcHRpb24SHAoJc3RhcnRUaW1lGAYgASgJUglzdGFydFRpbWUSGAoHZW5kVGltZRgHIAEoCVIHZW5kVGltZRItCgZwcmljZXMYCCADKAsyFS5ldmVudC52MS5DcmVhdGVQcmljZVIGcHJpY2Vz');
+final $typed_data.Uint8List createMeetupEventRequestDescriptor = $convert.base64Decode('ChhDcmVhdGVNZWV0dXBFdmVudFJlcXVlc3QSFgoGYXJlYUlkGAEgASgNUgZhcmVhSWQSFAoFaW1hZ2UYAiABKAxSBWltYWdlEjYKBHRhZ3MYAyADKAsyIi5ldmVudC52MS5DcmVhdGVNZWV0dXBFdmVudEhhc2hUYWdSBHRhZ3MSEgoEZGF0ZRgEIAEoCVIEZGF0ZRIgCgtkZXNjcmlwdGlvbhgFIAEoCVILZGVzY3JpcHRpb24SHAoJc3RhcnRUaW1lGAYgASgJUglzdGFydFRpbWUSGAoHZW5kVGltZRgHIAEoCVIHZW5kVGltZRItCgZwcmljZXMYCCADKAsyFS5ldmVudC52MS5DcmVhdGVQcmljZVIGcHJpY2VzEhoKCGxhdGl0dWRlGAkgASgBUghsYXRpdHVkZRIcCglsb25naXR1ZGUYCiABKAFSCWxvbmdpdHVkZRIYCgdhZGRyZXNzGAsgASgJUgdhZGRyZXNz');
 @$core.Deprecated('Use createMeetupEventResponseDescriptor instead')
 const CreateMeetupEventResponse$json = const {
   '1': 'CreateMeetupEventResponse',
@@ -48,6 +51,9 @@ const UpdateMeetupEventRequest$json = const {
     const {'1': 'startTime', '3': 7, '4': 1, '5': 9, '9': 4, '10': 'startTime', '17': true},
     const {'1': 'endTime', '3': 8, '4': 1, '5': 9, '9': 5, '10': 'endTime', '17': true},
     const {'1': 'prices', '3': 9, '4': 3, '5': 11, '6': '.event.v1.CreatePrice', '10': 'prices'},
+    const {'1': 'latitude', '3': 10, '4': 1, '5': 1, '9': 6, '10': 'latitude', '17': true},
+    const {'1': 'longitude', '3': 11, '4': 1, '5': 1, '9': 7, '10': 'longitude', '17': true},
+    const {'1': 'address', '3': 12, '4': 1, '5': 9, '9': 8, '10': 'address', '17': true},
   ],
   '8': const [
     const {'1': '_areaId'},
@@ -56,11 +62,14 @@ const UpdateMeetupEventRequest$json = const {
     const {'1': '_description'},
     const {'1': '_startTime'},
     const {'1': '_endTime'},
+    const {'1': '_latitude'},
+    const {'1': '_longitude'},
+    const {'1': '_address'},
   ],
 };
 
 /// Descriptor for `UpdateMeetupEventRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateMeetupEventRequestDescriptor = $convert.base64Decode('ChhVcGRhdGVNZWV0dXBFdmVudFJlcXVlc3QSDgoCaWQYASABKAlSAmlkEhsKBmFyZWFJZBgCIAEoDUgAUgZhcmVhSWSIAQESGQoFaW1hZ2UYAyABKAxIAVIFaW1hZ2WIAQESNgoEdGFncxgEIAMoCzIiLmV2ZW50LnYxLkNyZWF0ZU1lZXR1cEV2ZW50SGFzaFRhZ1IEdGFncxIXCgRkYXRlGAUgASgJSAJSBGRhdGWIAQESJQoLZGVzY3JpcHRpb24YBiABKAlIA1ILZGVzY3JpcHRpb26IAQESIQoJc3RhcnRUaW1lGAcgASgJSARSCXN0YXJ0VGltZYgBARIdCgdlbmRUaW1lGAggASgJSAVSB2VuZFRpbWWIAQESLQoGcHJpY2VzGAkgAygLMhUuZXZlbnQudjEuQ3JlYXRlUHJpY2VSBnByaWNlc0IJCgdfYXJlYUlkQggKBl9pbWFnZUIHCgVfZGF0ZUIOCgxfZGVzY3JpcHRpb25CDAoKX3N0YXJ0VGltZUIKCghfZW5kVGltZQ==');
+final $typed_data.Uint8List updateMeetupEventRequestDescriptor = $convert.base64Decode('ChhVcGRhdGVNZWV0dXBFdmVudFJlcXVlc3QSDgoCaWQYASABKAlSAmlkEhsKBmFyZWFJZBgCIAEoDUgAUgZhcmVhSWSIAQESGQoFaW1hZ2UYAyABKAxIAVIFaW1hZ2WIAQESNgoEdGFncxgEIAMoCzIiLmV2ZW50LnYxLkNyZWF0ZU1lZXR1cEV2ZW50SGFzaFRhZ1IEdGFncxIXCgRkYXRlGAUgASgJSAJSBGRhdGWIAQESJQoLZGVzY3JpcHRpb24YBiABKAlIA1ILZGVzY3JpcHRpb26IAQESIQoJc3RhcnRUaW1lGAcgASgJSARSCXN0YXJ0VGltZYgBARIdCgdlbmRUaW1lGAggASgJSAVSB2VuZFRpbWWIAQESLQoGcHJpY2VzGAkgAygLMhUuZXZlbnQudjEuQ3JlYXRlUHJpY2VSBnByaWNlcxIfCghsYXRpdHVkZRgKIAEoAUgGUghsYXRpdHVkZYgBARIhCglsb25naXR1ZGUYCyABKAFIB1IJbG9uZ2l0dWRliAEBEh0KB2FkZHJlc3MYDCABKAlICFIHYWRkcmVzc4gBAUIJCgdfYXJlYUlkQggKBl9pbWFnZUIHCgVfZGF0ZUIOCgxfZGVzY3JpcHRpb25CDAoKX3N0YXJ0VGltZUIKCghfZW5kVGltZUILCglfbGF0aXR1ZGVCDAoKX2xvbmdpdHVkZUIKCghfYWRkcmVzcw==');
 @$core.Deprecated('Use updateMeetupEventResponseDescriptor instead')
 const UpdateMeetupEventResponse$json = const {
   '1': 'UpdateMeetupEventResponse',
@@ -117,13 +126,16 @@ const GetMeetupEventResponse$json = const {
     const {'1': 'imagePath', '3': 10, '4': 1, '5': 9, '10': 'imagePath'},
     const {'1': 'booked', '3': 11, '4': 1, '5': 8, '10': 'booked'},
     const {'1': 'status', '3': 12, '4': 1, '5': 13, '10': 'status'},
-    const {'1': 'createdAt', '3': 13, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    const {'1': 'updatedAt', '3': 14, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+    const {'1': 'latitude', '3': 13, '4': 1, '5': 1, '10': 'latitude'},
+    const {'1': 'longitude', '3': 14, '4': 1, '5': 1, '10': 'longitude'},
+    const {'1': 'address', '3': 15, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'createdAt', '3': 16, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    const {'1': 'updatedAt', '3': 17, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
   ],
 };
 
 /// Descriptor for `GetMeetupEventResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getMeetupEventResponseDescriptor = $convert.base64Decode('ChZHZXRNZWV0dXBFdmVudFJlc3BvbnNlEg4KAmlkGAEgASgJUgJpZBISCgRhcmVhGAIgASgJUgRhcmVhEiUKBHRhZ3MYAyADKAsyES5ldmVudC52MS5IYXNoVGFnUgR0YWdzEhIKBGRhdGUYBCABKAlSBGRhdGUSIAoLZGVzY3JpcHRpb24YBSABKAlSC2Rlc2NyaXB0aW9uEhwKCXN0YXJ0VGltZRgGIAEoCVIJc3RhcnRUaW1lEhgKB2VuZFRpbWUYByABKAlSB2VuZFRpbWUSJwoGcHJpY2VzGAggAygLMg8uZXZlbnQudjEuUHJpY2VSBnByaWNlcxIqCgdkZXRhaWxzGAkgAygLMhAuZXZlbnQudjEuRGV0YWlsUgdkZXRhaWxzEhwKCWltYWdlUGF0aBgKIAEoCVIJaW1hZ2VQYXRoEhYKBmJvb2tlZBgLIAEoCFIGYm9va2VkEhYKBnN0YXR1cxgMIAEoDVIGc3RhdHVzEjgKCWNyZWF0ZWRBdBgNIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCWNyZWF0ZWRBdBI4Cgl1cGRhdGVkQXQYDiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgl1cGRhdGVkQXQ=');
+final $typed_data.Uint8List getMeetupEventResponseDescriptor = $convert.base64Decode('ChZHZXRNZWV0dXBFdmVudFJlc3BvbnNlEg4KAmlkGAEgASgJUgJpZBISCgRhcmVhGAIgASgJUgRhcmVhEiUKBHRhZ3MYAyADKAsyES5ldmVudC52MS5IYXNoVGFnUgR0YWdzEhIKBGRhdGUYBCABKAlSBGRhdGUSIAoLZGVzY3JpcHRpb24YBSABKAlSC2Rlc2NyaXB0aW9uEhwKCXN0YXJ0VGltZRgGIAEoCVIJc3RhcnRUaW1lEhgKB2VuZFRpbWUYByABKAlSB2VuZFRpbWUSJwoGcHJpY2VzGAggAygLMg8uZXZlbnQudjEuUHJpY2VSBnByaWNlcxIqCgdkZXRhaWxzGAkgAygLMhAuZXZlbnQudjEuRGV0YWlsUgdkZXRhaWxzEhwKCWltYWdlUGF0aBgKIAEoCVIJaW1hZ2VQYXRoEhYKBmJvb2tlZBgLIAEoCFIGYm9va2VkEhYKBnN0YXR1cxgMIAEoDVIGc3RhdHVzEhoKCGxhdGl0dWRlGA0gASgBUghsYXRpdHVkZRIcCglsb25naXR1ZGUYDiABKAFSCWxvbmdpdHVkZRIYCgdhZGRyZXNzGA8gASgJUgdhZGRyZXNzEjgKCWNyZWF0ZWRBdBgQIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCWNyZWF0ZWRBdBI4Cgl1cGRhdGVkQXQYESABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgl1cGRhdGVkQXQ=');
 @$core.Deprecated('Use listMeetupEventRequestDescriptor instead')
 const ListMeetupEventRequest$json = const {
   '1': 'ListMeetupEventRequest',
@@ -173,13 +185,16 @@ const MeetupEvent$json = const {
     const {'1': 'imagePath', '3': 9, '4': 1, '5': 9, '10': 'imagePath'},
     const {'1': 'booked', '3': 10, '4': 1, '5': 8, '10': 'booked'},
     const {'1': 'status', '3': 11, '4': 1, '5': 13, '10': 'status'},
-    const {'1': 'createdAt', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    const {'1': 'updatedAt', '3': 13, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+    const {'1': 'latitude', '3': 12, '4': 1, '5': 1, '10': 'latitude'},
+    const {'1': 'longitude', '3': 13, '4': 1, '5': 1, '10': 'longitude'},
+    const {'1': 'address', '3': 14, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'createdAt', '3': 15, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    const {'1': 'updatedAt', '3': 16, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
   ],
 };
 
 /// Descriptor for `MeetupEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List meetupEventDescriptor = $convert.base64Decode('CgtNZWV0dXBFdmVudBIOCgJpZBgBIAEoCVICaWQSEgoEYXJlYRgCIAEoCVIEYXJlYRIlCgR0YWdzGAMgAygLMhEuZXZlbnQudjEuSGFzaFRhZ1IEdGFncxISCgRkYXRlGAQgASgJUgRkYXRlEiAKC2Rlc2NyaXB0aW9uGAUgASgJUgtkZXNjcmlwdGlvbhIcCglzdGFydFRpbWUYBiABKAlSCXN0YXJ0VGltZRIYCgdlbmRUaW1lGAcgASgJUgdlbmRUaW1lEicKBnByaWNlcxgIIAMoCzIPLmV2ZW50LnYxLlByaWNlUgZwcmljZXMSHAoJaW1hZ2VQYXRoGAkgASgJUglpbWFnZVBhdGgSFgoGYm9va2VkGAogASgIUgZib29rZWQSFgoGc3RhdHVzGAsgASgNUgZzdGF0dXMSOAoJY3JlYXRlZEF0GAwgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjgKCXVwZGF0ZWRBdBgNIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
+final $typed_data.Uint8List meetupEventDescriptor = $convert.base64Decode('CgtNZWV0dXBFdmVudBIOCgJpZBgBIAEoCVICaWQSEgoEYXJlYRgCIAEoCVIEYXJlYRIlCgR0YWdzGAMgAygLMhEuZXZlbnQudjEuSGFzaFRhZ1IEdGFncxISCgRkYXRlGAQgASgJUgRkYXRlEiAKC2Rlc2NyaXB0aW9uGAUgASgJUgtkZXNjcmlwdGlvbhIcCglzdGFydFRpbWUYBiABKAlSCXN0YXJ0VGltZRIYCgdlbmRUaW1lGAcgASgJUgdlbmRUaW1lEicKBnByaWNlcxgIIAMoCzIPLmV2ZW50LnYxLlByaWNlUgZwcmljZXMSHAoJaW1hZ2VQYXRoGAkgASgJUglpbWFnZVBhdGgSFgoGYm9va2VkGAogASgIUgZib29rZWQSFgoGc3RhdHVzGAsgASgNUgZzdGF0dXMSGgoIbGF0aXR1ZGUYDCABKAFSCGxhdGl0dWRlEhwKCWxvbmdpdHVkZRgNIAEoAVIJbG9uZ2l0dWRlEhgKB2FkZHJlc3MYDiABKAlSB2FkZHJlc3MSOAoJY3JlYXRlZEF0GA8gASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjgKCXVwZGF0ZWRBdBgQIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
 @$core.Deprecated('Use createPriceDescriptor instead')
 const CreatePrice$json = const {
   '1': 'CreatePrice',
@@ -512,13 +527,16 @@ const GetMeetupEventAdminResponse$json = const {
     const {'1': 'prices', '3': 8, '4': 3, '5': 11, '6': '.event.v1.Price', '10': 'prices'},
     const {'1': 'details', '3': 9, '4': 3, '5': 11, '6': '.event.v1.Detail', '10': 'details'},
     const {'1': 'imagePath', '3': 10, '4': 1, '5': 9, '10': 'imagePath'},
-    const {'1': 'createdAt', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    const {'1': 'updatedAt', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+    const {'1': 'latitude', '3': 11, '4': 1, '5': 1, '10': 'latitude'},
+    const {'1': 'longitude', '3': 12, '4': 1, '5': 1, '10': 'longitude'},
+    const {'1': 'address', '3': 13, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'createdAt', '3': 14, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    const {'1': 'updatedAt', '3': 15, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
   ],
 };
 
 /// Descriptor for `GetMeetupEventAdminResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getMeetupEventAdminResponseDescriptor = $convert.base64Decode('ChtHZXRNZWV0dXBFdmVudEFkbWluUmVzcG9uc2USDgoCaWQYASABKAlSAmlkEhIKBGFyZWEYAiABKAlSBGFyZWESJQoEdGFncxgDIAMoCzIRLmV2ZW50LnYxLkhhc2hUYWdSBHRhZ3MSEgoEZGF0ZRgEIAEoCVIEZGF0ZRIgCgtkZXNjcmlwdGlvbhgFIAEoCVILZGVzY3JpcHRpb24SHAoJc3RhcnRUaW1lGAYgASgJUglzdGFydFRpbWUSGAoHZW5kVGltZRgHIAEoCVIHZW5kVGltZRInCgZwcmljZXMYCCADKAsyDy5ldmVudC52MS5QcmljZVIGcHJpY2VzEioKB2RldGFpbHMYCSADKAsyEC5ldmVudC52MS5EZXRhaWxSB2RldGFpbHMSHAoJaW1hZ2VQYXRoGAogASgJUglpbWFnZVBhdGgSOAoJY3JlYXRlZEF0GAsgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjgKCXVwZGF0ZWRBdBgMIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
+final $typed_data.Uint8List getMeetupEventAdminResponseDescriptor = $convert.base64Decode('ChtHZXRNZWV0dXBFdmVudEFkbWluUmVzcG9uc2USDgoCaWQYASABKAlSAmlkEhIKBGFyZWEYAiABKAlSBGFyZWESJQoEdGFncxgDIAMoCzIRLmV2ZW50LnYxLkhhc2hUYWdSBHRhZ3MSEgoEZGF0ZRgEIAEoCVIEZGF0ZRIgCgtkZXNjcmlwdGlvbhgFIAEoCVILZGVzY3JpcHRpb24SHAoJc3RhcnRUaW1lGAYgASgJUglzdGFydFRpbWUSGAoHZW5kVGltZRgHIAEoCVIHZW5kVGltZRInCgZwcmljZXMYCCADKAsyDy5ldmVudC52MS5QcmljZVIGcHJpY2VzEioKB2RldGFpbHMYCSADKAsyEC5ldmVudC52MS5EZXRhaWxSB2RldGFpbHMSHAoJaW1hZ2VQYXRoGAogASgJUglpbWFnZVBhdGgSGgoIbGF0aXR1ZGUYCyABKAFSCGxhdGl0dWRlEhwKCWxvbmdpdHVkZRgMIAEoAVIJbG9uZ2l0dWRlEhgKB2FkZHJlc3MYDSABKAlSB2FkZHJlc3MSOAoJY3JlYXRlZEF0GA4gASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjgKCXVwZGF0ZWRBdBgPIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
 @$core.Deprecated('Use meetupEventAdminDescriptor instead')
 const MeetupEventAdmin$json = const {
   '1': 'MeetupEventAdmin',
@@ -533,13 +551,16 @@ const MeetupEventAdmin$json = const {
     const {'1': 'prices', '3': 8, '4': 3, '5': 11, '6': '.event.v1.Price', '10': 'prices'},
     const {'1': 'imagePath', '3': 9, '4': 1, '5': 9, '10': 'imagePath'},
     const {'1': 'booked', '3': 10, '4': 1, '5': 8, '10': 'booked'},
-    const {'1': 'createdAt', '3': 11, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    const {'1': 'updatedAt', '3': 12, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+    const {'1': 'latitude', '3': 11, '4': 1, '5': 1, '10': 'latitude'},
+    const {'1': 'longitude', '3': 12, '4': 1, '5': 1, '10': 'longitude'},
+    const {'1': 'address', '3': 13, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'createdAt', '3': 14, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    const {'1': 'updatedAt', '3': 15, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
   ],
 };
 
 /// Descriptor for `MeetupEventAdmin`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List meetupEventAdminDescriptor = $convert.base64Decode('ChBNZWV0dXBFdmVudEFkbWluEg4KAmlkGAEgASgJUgJpZBISCgRhcmVhGAIgASgJUgRhcmVhEiUKBHRhZ3MYAyADKAsyES5ldmVudC52MS5IYXNoVGFnUgR0YWdzEhIKBGRhdGUYBCABKAlSBGRhdGUSIAoLZGVzY3JpcHRpb24YBSABKAlSC2Rlc2NyaXB0aW9uEhwKCXN0YXJ0VGltZRgGIAEoCVIJc3RhcnRUaW1lEhgKB2VuZFRpbWUYByABKAlSB2VuZFRpbWUSJwoGcHJpY2VzGAggAygLMg8uZXZlbnQudjEuUHJpY2VSBnByaWNlcxIcCglpbWFnZVBhdGgYCSABKAlSCWltYWdlUGF0aBIWCgZib29rZWQYCiABKAhSBmJvb2tlZBI4CgljcmVhdGVkQXQYCyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOAoJdXBkYXRlZEF0GAwgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJdXBkYXRlZEF0');
+final $typed_data.Uint8List meetupEventAdminDescriptor = $convert.base64Decode('ChBNZWV0dXBFdmVudEFkbWluEg4KAmlkGAEgASgJUgJpZBISCgRhcmVhGAIgASgJUgRhcmVhEiUKBHRhZ3MYAyADKAsyES5ldmVudC52MS5IYXNoVGFnUgR0YWdzEhIKBGRhdGUYBCABKAlSBGRhdGUSIAoLZGVzY3JpcHRpb24YBSABKAlSC2Rlc2NyaXB0aW9uEhwKCXN0YXJ0VGltZRgGIAEoCVIJc3RhcnRUaW1lEhgKB2VuZFRpbWUYByABKAlSB2VuZFRpbWUSJwoGcHJpY2VzGAggAygLMg8uZXZlbnQudjEuUHJpY2VSBnByaWNlcxIcCglpbWFnZVBhdGgYCSABKAlSCWltYWdlUGF0aBIWCgZib29rZWQYCiABKAhSBmJvb2tlZBIaCghsYXRpdHVkZRgLIAEoAVIIbGF0aXR1ZGUSHAoJbG9uZ2l0dWRlGAwgASgBUglsb25naXR1ZGUSGAoHYWRkcmVzcxgNIAEoCVIHYWRkcmVzcxI4CgljcmVhdGVkQXQYDiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgljcmVhdGVkQXQSOAoJdXBkYXRlZEF0GA8gASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJdXBkYXRlZEF0');
 @$core.Deprecated('Use listMeetupEventAdminRequestDescriptor instead')
 const ListMeetupEventAdminRequest$json = const {
   '1': 'ListMeetupEventAdminRequest',
