@@ -4614,3 +4614,304 @@ class UserInfo extends $pb.GeneratedMessage {
   void clearProfileImagePath() => clearField(3);
 }
 
+class SendMeetupEventMessageRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SendMeetupEventMessageRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'event.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'meetupEventId', protoName: 'meetupEventId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'text')
+    ..hasRequiredFields = false
+  ;
+
+  SendMeetupEventMessageRequest._() : super();
+  factory SendMeetupEventMessageRequest({
+    $core.String? meetupEventId,
+    $core.String? text,
+  }) {
+    final _result = create();
+    if (meetupEventId != null) {
+      _result.meetupEventId = meetupEventId;
+    }
+    if (text != null) {
+      _result.text = text;
+    }
+    return _result;
+  }
+  factory SendMeetupEventMessageRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendMeetupEventMessageRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SendMeetupEventMessageRequest clone() => SendMeetupEventMessageRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SendMeetupEventMessageRequest copyWith(void Function(SendMeetupEventMessageRequest) updates) => super.copyWith((message) => updates(message as SendMeetupEventMessageRequest)) as SendMeetupEventMessageRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SendMeetupEventMessageRequest create() => SendMeetupEventMessageRequest._();
+  SendMeetupEventMessageRequest createEmptyInstance() => create();
+  static $pb.PbList<SendMeetupEventMessageRequest> createRepeated() => $pb.PbList<SendMeetupEventMessageRequest>();
+  @$core.pragma('dart2js:noInline')
+  static SendMeetupEventMessageRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendMeetupEventMessageRequest>(create);
+  static SendMeetupEventMessageRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get meetupEventId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set meetupEventId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMeetupEventId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMeetupEventId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get text => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set text($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasText() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearText() => clearField(2);
+}
+
+class SendMeetupEventMessageResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SendMeetupEventMessageResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'event.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
+    ..hasRequiredFields = false
+  ;
+
+  SendMeetupEventMessageResponse._() : super();
+  factory SendMeetupEventMessageResponse({
+    $core.String? success,
+  }) {
+    final _result = create();
+    if (success != null) {
+      _result.success = success;
+    }
+    return _result;
+  }
+  factory SendMeetupEventMessageResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendMeetupEventMessageResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SendMeetupEventMessageResponse clone() => SendMeetupEventMessageResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SendMeetupEventMessageResponse copyWith(void Function(SendMeetupEventMessageResponse) updates) => super.copyWith((message) => updates(message as SendMeetupEventMessageResponse)) as SendMeetupEventMessageResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SendMeetupEventMessageResponse create() => SendMeetupEventMessageResponse._();
+  SendMeetupEventMessageResponse createEmptyInstance() => create();
+  static $pb.PbList<SendMeetupEventMessageResponse> createRepeated() => $pb.PbList<SendMeetupEventMessageResponse>();
+  @$core.pragma('dart2js:noInline')
+  static SendMeetupEventMessageResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendMeetupEventMessageResponse>(create);
+  static SendMeetupEventMessageResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get success => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set success($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasSuccess() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearSuccess() => clearField(1);
+}
+
+class GetMeetupEventMessagesRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMeetupEventMessagesRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'event.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'meetupEventId', protoName: 'meetupEventId')
+    ..hasRequiredFields = false
+  ;
+
+  GetMeetupEventMessagesRequest._() : super();
+  factory GetMeetupEventMessagesRequest({
+    $core.String? meetupEventId,
+  }) {
+    final _result = create();
+    if (meetupEventId != null) {
+      _result.meetupEventId = meetupEventId;
+    }
+    return _result;
+  }
+  factory GetMeetupEventMessagesRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetMeetupEventMessagesRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetMeetupEventMessagesRequest clone() => GetMeetupEventMessagesRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetMeetupEventMessagesRequest copyWith(void Function(GetMeetupEventMessagesRequest) updates) => super.copyWith((message) => updates(message as GetMeetupEventMessagesRequest)) as GetMeetupEventMessagesRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetMeetupEventMessagesRequest create() => GetMeetupEventMessagesRequest._();
+  GetMeetupEventMessagesRequest createEmptyInstance() => create();
+  static $pb.PbList<GetMeetupEventMessagesRequest> createRepeated() => $pb.PbList<GetMeetupEventMessagesRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetMeetupEventMessagesRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetMeetupEventMessagesRequest>(create);
+  static GetMeetupEventMessagesRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get meetupEventId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set meetupEventId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasMeetupEventId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearMeetupEventId() => clearField(1);
+}
+
+class GetMeetupEventMessagesResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMeetupEventMessagesResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'event.v1'), createEmptyInstance: create)
+    ..pc<MeetupEventMessage>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'messages', $pb.PbFieldType.PM, subBuilder: MeetupEventMessage.create)
+    ..hasRequiredFields = false
+  ;
+
+  GetMeetupEventMessagesResponse._() : super();
+  factory GetMeetupEventMessagesResponse({
+    $core.Iterable<MeetupEventMessage>? messages,
+  }) {
+    final _result = create();
+    if (messages != null) {
+      _result.messages.addAll(messages);
+    }
+    return _result;
+  }
+  factory GetMeetupEventMessagesResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetMeetupEventMessagesResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetMeetupEventMessagesResponse clone() => GetMeetupEventMessagesResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetMeetupEventMessagesResponse copyWith(void Function(GetMeetupEventMessagesResponse) updates) => super.copyWith((message) => updates(message as GetMeetupEventMessagesResponse)) as GetMeetupEventMessagesResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetMeetupEventMessagesResponse create() => GetMeetupEventMessagesResponse._();
+  GetMeetupEventMessagesResponse createEmptyInstance() => create();
+  static $pb.PbList<GetMeetupEventMessagesResponse> createRepeated() => $pb.PbList<GetMeetupEventMessagesResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetMeetupEventMessagesResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetMeetupEventMessagesResponse>(create);
+  static GetMeetupEventMessagesResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<MeetupEventMessage> get messages => $_getList(0);
+}
+
+class MeetupEventMessage extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MeetupEventMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'event.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderId', protoName: 'senderId')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'meetupEventId', protoName: 'meetupEventId')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'text')
+    ..aOM<$33.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sentAt', protoName: 'sentAt', subBuilder: $33.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
+  MeetupEventMessage._() : super();
+  factory MeetupEventMessage({
+    $core.String? id,
+    $core.String? senderId,
+    $core.String? meetupEventId,
+    $core.String? text,
+    $33.Timestamp? sentAt,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (senderId != null) {
+      _result.senderId = senderId;
+    }
+    if (meetupEventId != null) {
+      _result.meetupEventId = meetupEventId;
+    }
+    if (text != null) {
+      _result.text = text;
+    }
+    if (sentAt != null) {
+      _result.sentAt = sentAt;
+    }
+    return _result;
+  }
+  factory MeetupEventMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MeetupEventMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MeetupEventMessage clone() => MeetupEventMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MeetupEventMessage copyWith(void Function(MeetupEventMessage) updates) => super.copyWith((message) => updates(message as MeetupEventMessage)) as MeetupEventMessage; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MeetupEventMessage create() => MeetupEventMessage._();
+  MeetupEventMessage createEmptyInstance() => create();
+  static $pb.PbList<MeetupEventMessage> createRepeated() => $pb.PbList<MeetupEventMessage>();
+  @$core.pragma('dart2js:noInline')
+  static MeetupEventMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MeetupEventMessage>(create);
+  static MeetupEventMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get senderId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set senderId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasSenderId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSenderId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get meetupEventId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set meetupEventId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasMeetupEventId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMeetupEventId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get text => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set text($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasText() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearText() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $33.Timestamp get sentAt => $_getN(4);
+  @$pb.TagNumber(5)
+  set sentAt($33.Timestamp v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasSentAt() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearSentAt() => clearField(5);
+  @$pb.TagNumber(5)
+  $33.Timestamp ensureSentAt() => $_ensure(4);
+}
+

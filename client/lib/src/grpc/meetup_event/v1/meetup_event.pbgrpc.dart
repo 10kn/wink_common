@@ -147,6 +147,20 @@ class MeetupEventServiceClient extends $grpc.Client {
       ($15.ListUserBookedMeetupEventRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
           $15.ListUserBookedMeetupEventResponse.fromBuffer(value));
+  static final _$getMeetupEventMessages = $grpc.ClientMethod<
+          $15.GetMeetupEventMessagesRequest,
+          $15.GetMeetupEventMessagesResponse>(
+      '/event.v1.MeetupEventService/GetMeetupEventMessages',
+      ($15.GetMeetupEventMessagesRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $15.GetMeetupEventMessagesResponse.fromBuffer(value));
+  static final _$sendMeetupEventMessage = $grpc.ClientMethod<
+          $15.SendMeetupEventMessageRequest,
+          $15.SendMeetupEventMessageResponse>(
+      '/event.v1.MeetupEventService/SendMeetupEventMessage',
+      ($15.SendMeetupEventMessageRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $15.SendMeetupEventMessageResponse.fromBuffer(value));
 
   MeetupEventServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -282,6 +296,20 @@ class MeetupEventServiceClient extends $grpc.Client {
       listUserBookedMeetupEvent($15.ListUserBookedMeetupEventRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listUserBookedMeetupEvent, request,
+        options: options);
+  }
+
+  $grpc.ResponseFuture<$15.GetMeetupEventMessagesResponse>
+      getMeetupEventMessages($15.GetMeetupEventMessagesRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getMeetupEventMessages, request,
+        options: options);
+  }
+
+  $grpc.ResponseFuture<$15.SendMeetupEventMessageResponse>
+      sendMeetupEventMessage($15.SendMeetupEventMessageRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$sendMeetupEventMessage, request,
         options: options);
   }
 }
@@ -485,6 +513,24 @@ abstract class MeetupEventServiceBase extends $grpc.Service {
             $15.ListUserBookedMeetupEventRequest.fromBuffer(value),
         ($15.ListUserBookedMeetupEventResponse value) =>
             value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$15.GetMeetupEventMessagesRequest,
+            $15.GetMeetupEventMessagesResponse>(
+        'GetMeetupEventMessages',
+        getMeetupEventMessages_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $15.GetMeetupEventMessagesRequest.fromBuffer(value),
+        ($15.GetMeetupEventMessagesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$15.SendMeetupEventMessageRequest,
+            $15.SendMeetupEventMessageResponse>(
+        'SendMeetupEventMessage',
+        sendMeetupEventMessage_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $15.SendMeetupEventMessageRequest.fromBuffer(value),
+        ($15.SendMeetupEventMessageResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$15.CreateMeetupEventResponse> createMeetupEvent_Pre(
@@ -614,6 +660,18 @@ abstract class MeetupEventServiceBase extends $grpc.Service {
     return listUserBookedMeetupEvent(call, await request);
   }
 
+  $async.Future<$15.GetMeetupEventMessagesResponse> getMeetupEventMessages_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$15.GetMeetupEventMessagesRequest> request) async {
+    return getMeetupEventMessages(call, await request);
+  }
+
+  $async.Future<$15.SendMeetupEventMessageResponse> sendMeetupEventMessage_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$15.SendMeetupEventMessageRequest> request) async {
+    return sendMeetupEventMessage(call, await request);
+  }
+
   $async.Future<$15.CreateMeetupEventResponse> createMeetupEvent(
       $grpc.ServiceCall call, $15.CreateMeetupEventRequest request);
   $async.Future<$15.GetMeetupEventResponse> getMeetupEvent(
@@ -659,4 +717,8 @@ abstract class MeetupEventServiceBase extends $grpc.Service {
   $async.Future<$15.ListUserBookedMeetupEventResponse>
       listUserBookedMeetupEvent(
           $grpc.ServiceCall call, $15.ListUserBookedMeetupEventRequest request);
+  $async.Future<$15.GetMeetupEventMessagesResponse> getMeetupEventMessages(
+      $grpc.ServiceCall call, $15.GetMeetupEventMessagesRequest request);
+  $async.Future<$15.SendMeetupEventMessageResponse> sendMeetupEventMessage(
+      $grpc.ServiceCall call, $15.SendMeetupEventMessageRequest request);
 }

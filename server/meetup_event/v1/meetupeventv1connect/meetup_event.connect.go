@@ -50,6 +50,8 @@ type MeetupEventServiceClient interface {
 	ListDetailAdmin(context.Context, *connect_go.Request[v1.ListDetailAdminRequest]) (*connect_go.Response[v1.ListDetailAdminResponse], error)
 	ListMeetupEventForUser(context.Context, *connect_go.Request[v1.ListMeetupEventForUserRequest]) (*connect_go.Response[v1.ListMeetupEventForUserResponse], error)
 	ListUserBookedMeetupEvent(context.Context, *connect_go.Request[v1.ListUserBookedMeetupEventRequest]) (*connect_go.Response[v1.ListUserBookedMeetupEventResponse], error)
+	GetMeetupEventMessages(context.Context, *connect_go.Request[v1.GetMeetupEventMessagesRequest]) (*connect_go.Response[v1.GetMeetupEventMessagesResponse], error)
+	SendMeetupEventMessage(context.Context, *connect_go.Request[v1.SendMeetupEventMessageRequest]) (*connect_go.Response[v1.SendMeetupEventMessageResponse], error)
 }
 
 // NewMeetupEventServiceClient constructs a client for the event.v1.MeetupEventService service. By
@@ -172,6 +174,16 @@ func NewMeetupEventServiceClient(httpClient connect_go.HTTPClient, baseURL strin
 			baseURL+"/event.v1.MeetupEventService/ListUserBookedMeetupEvent",
 			opts...,
 		),
+		getMeetupEventMessages: connect_go.NewClient[v1.GetMeetupEventMessagesRequest, v1.GetMeetupEventMessagesResponse](
+			httpClient,
+			baseURL+"/event.v1.MeetupEventService/GetMeetupEventMessages",
+			opts...,
+		),
+		sendMeetupEventMessage: connect_go.NewClient[v1.SendMeetupEventMessageRequest, v1.SendMeetupEventMessageResponse](
+			httpClient,
+			baseURL+"/event.v1.MeetupEventService/SendMeetupEventMessage",
+			opts...,
+		),
 	}
 }
 
@@ -199,6 +211,8 @@ type meetupEventServiceClient struct {
 	listDetailAdmin           *connect_go.Client[v1.ListDetailAdminRequest, v1.ListDetailAdminResponse]
 	listMeetupEventForUser    *connect_go.Client[v1.ListMeetupEventForUserRequest, v1.ListMeetupEventForUserResponse]
 	listUserBookedMeetupEvent *connect_go.Client[v1.ListUserBookedMeetupEventRequest, v1.ListUserBookedMeetupEventResponse]
+	getMeetupEventMessages    *connect_go.Client[v1.GetMeetupEventMessagesRequest, v1.GetMeetupEventMessagesResponse]
+	sendMeetupEventMessage    *connect_go.Client[v1.SendMeetupEventMessageRequest, v1.SendMeetupEventMessageResponse]
 }
 
 // CreateMeetupEvent calls event.v1.MeetupEventService.CreateMeetupEvent.
@@ -311,6 +325,16 @@ func (c *meetupEventServiceClient) ListUserBookedMeetupEvent(ctx context.Context
 	return c.listUserBookedMeetupEvent.CallUnary(ctx, req)
 }
 
+// GetMeetupEventMessages calls event.v1.MeetupEventService.GetMeetupEventMessages.
+func (c *meetupEventServiceClient) GetMeetupEventMessages(ctx context.Context, req *connect_go.Request[v1.GetMeetupEventMessagesRequest]) (*connect_go.Response[v1.GetMeetupEventMessagesResponse], error) {
+	return c.getMeetupEventMessages.CallUnary(ctx, req)
+}
+
+// SendMeetupEventMessage calls event.v1.MeetupEventService.SendMeetupEventMessage.
+func (c *meetupEventServiceClient) SendMeetupEventMessage(ctx context.Context, req *connect_go.Request[v1.SendMeetupEventMessageRequest]) (*connect_go.Response[v1.SendMeetupEventMessageResponse], error) {
+	return c.sendMeetupEventMessage.CallUnary(ctx, req)
+}
+
 // MeetupEventServiceHandler is an implementation of the event.v1.MeetupEventService service.
 type MeetupEventServiceHandler interface {
 	CreateMeetupEvent(context.Context, *connect_go.Request[v1.CreateMeetupEventRequest]) (*connect_go.Response[v1.CreateMeetupEventResponse], error)
@@ -335,6 +359,8 @@ type MeetupEventServiceHandler interface {
 	ListDetailAdmin(context.Context, *connect_go.Request[v1.ListDetailAdminRequest]) (*connect_go.Response[v1.ListDetailAdminResponse], error)
 	ListMeetupEventForUser(context.Context, *connect_go.Request[v1.ListMeetupEventForUserRequest]) (*connect_go.Response[v1.ListMeetupEventForUserResponse], error)
 	ListUserBookedMeetupEvent(context.Context, *connect_go.Request[v1.ListUserBookedMeetupEventRequest]) (*connect_go.Response[v1.ListUserBookedMeetupEventResponse], error)
+	GetMeetupEventMessages(context.Context, *connect_go.Request[v1.GetMeetupEventMessagesRequest]) (*connect_go.Response[v1.GetMeetupEventMessagesResponse], error)
+	SendMeetupEventMessage(context.Context, *connect_go.Request[v1.SendMeetupEventMessageRequest]) (*connect_go.Response[v1.SendMeetupEventMessageResponse], error)
 }
 
 // NewMeetupEventServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -454,6 +480,16 @@ func NewMeetupEventServiceHandler(svc MeetupEventServiceHandler, opts ...connect
 		svc.ListUserBookedMeetupEvent,
 		opts...,
 	))
+	mux.Handle("/event.v1.MeetupEventService/GetMeetupEventMessages", connect_go.NewUnaryHandler(
+		"/event.v1.MeetupEventService/GetMeetupEventMessages",
+		svc.GetMeetupEventMessages,
+		opts...,
+	))
+	mux.Handle("/event.v1.MeetupEventService/SendMeetupEventMessage", connect_go.NewUnaryHandler(
+		"/event.v1.MeetupEventService/SendMeetupEventMessage",
+		svc.SendMeetupEventMessage,
+		opts...,
+	))
 	return "/event.v1.MeetupEventService/", mux
 }
 
@@ -546,4 +582,12 @@ func (UnimplementedMeetupEventServiceHandler) ListMeetupEventForUser(context.Con
 
 func (UnimplementedMeetupEventServiceHandler) ListUserBookedMeetupEvent(context.Context, *connect_go.Request[v1.ListUserBookedMeetupEventRequest]) (*connect_go.Response[v1.ListUserBookedMeetupEventResponse], error) {
 	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("event.v1.MeetupEventService.ListUserBookedMeetupEvent is not implemented"))
+}
+
+func (UnimplementedMeetupEventServiceHandler) GetMeetupEventMessages(context.Context, *connect_go.Request[v1.GetMeetupEventMessagesRequest]) (*connect_go.Response[v1.GetMeetupEventMessagesResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("event.v1.MeetupEventService.GetMeetupEventMessages is not implemented"))
+}
+
+func (UnimplementedMeetupEventServiceHandler) SendMeetupEventMessage(context.Context, *connect_go.Request[v1.SendMeetupEventMessageRequest]) (*connect_go.Response[v1.SendMeetupEventMessageResponse], error) {
+	return nil, connect_go.NewError(connect_go.CodeUnimplemented, errors.New("event.v1.MeetupEventService.SendMeetupEventMessage is not implemented"))
 }

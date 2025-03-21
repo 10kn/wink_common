@@ -31,6 +31,8 @@ service MeetupEventService {
   rpc ListDetailAdmin(ListDetailAdminRequest) returns (ListDetailAdminResponse);
   rpc ListMeetupEventForUser(ListMeetupEventForUserRequest) returns (ListMeetupEventForUserResponse);
   rpc ListUserBookedMeetupEvent(ListUserBookedMeetupEventRequest) returns (ListUserBookedMeetupEventResponse);
+  rpc GetMeetupEventMessages(GetMeetupEventMessagesRequest) returns (GetMeetupEventMessagesResponse);
+  rpc SendMeetupEventMessage(SendMeetupEventMessageRequest) returns (SendMeetupEventMessageResponse);
 }
 
 message CreateMeetupEventRequest {
@@ -405,4 +407,29 @@ message UserInfo {
   string                    userId           = 1;
   string                    nickName         = 2;
   string                    profileImagePath = 3;
+}
+
+message SendMeetupEventMessageRequest {
+  string meetupEventId = 1;
+  string text = 2;
+}
+
+message SendMeetupEventMessageResponse {
+  string success = 1;
+}
+
+message GetMeetupEventMessagesRequest {
+  string meetupEventId = 1;
+}
+
+message GetMeetupEventMessagesResponse {
+  repeated MeetupEventMessage messages = 1;
+}
+
+message MeetupEventMessage {
+  string                    id            = 1;
+  string                    senderId      = 2;
+  string                    meetupEventId = 3;
+  string                    text          = 4;
+  google.protobuf.Timestamp sentAt        = 5;
 }
