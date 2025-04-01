@@ -188,13 +188,14 @@ const MeetupEvent$json = const {
     const {'1': 'latitude', '3': 12, '4': 1, '5': 1, '10': 'latitude'},
     const {'1': 'longitude', '3': 13, '4': 1, '5': 1, '10': 'longitude'},
     const {'1': 'address', '3': 14, '4': 1, '5': 9, '10': 'address'},
-    const {'1': 'createdAt', '3': 15, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    const {'1': 'updatedAt', '3': 16, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+    const {'1': 'userCount', '3': 15, '4': 1, '5': 13, '10': 'userCount'},
+    const {'1': 'createdAt', '3': 16, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    const {'1': 'updatedAt', '3': 17, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
   ],
 };
 
 /// Descriptor for `MeetupEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List meetupEventDescriptor = $convert.base64Decode('CgtNZWV0dXBFdmVudBIOCgJpZBgBIAEoCVICaWQSEgoEYXJlYRgCIAEoCVIEYXJlYRIlCgR0YWdzGAMgAygLMhEuZXZlbnQudjEuSGFzaFRhZ1IEdGFncxISCgRkYXRlGAQgASgJUgRkYXRlEiAKC2Rlc2NyaXB0aW9uGAUgASgJUgtkZXNjcmlwdGlvbhIcCglzdGFydFRpbWUYBiABKAlSCXN0YXJ0VGltZRIYCgdlbmRUaW1lGAcgASgJUgdlbmRUaW1lEicKBnByaWNlcxgIIAMoCzIPLmV2ZW50LnYxLlByaWNlUgZwcmljZXMSHAoJaW1hZ2VQYXRoGAkgASgJUglpbWFnZVBhdGgSFgoGYm9va2VkGAogASgIUgZib29rZWQSFgoGc3RhdHVzGAsgASgNUgZzdGF0dXMSGgoIbGF0aXR1ZGUYDCABKAFSCGxhdGl0dWRlEhwKCWxvbmdpdHVkZRgNIAEoAVIJbG9uZ2l0dWRlEhgKB2FkZHJlc3MYDiABKAlSB2FkZHJlc3MSOAoJY3JlYXRlZEF0GA8gASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjgKCXVwZGF0ZWRBdBgQIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
+final $typed_data.Uint8List meetupEventDescriptor = $convert.base64Decode('CgtNZWV0dXBFdmVudBIOCgJpZBgBIAEoCVICaWQSEgoEYXJlYRgCIAEoCVIEYXJlYRIlCgR0YWdzGAMgAygLMhEuZXZlbnQudjEuSGFzaFRhZ1IEdGFncxISCgRkYXRlGAQgASgJUgRkYXRlEiAKC2Rlc2NyaXB0aW9uGAUgASgJUgtkZXNjcmlwdGlvbhIcCglzdGFydFRpbWUYBiABKAlSCXN0YXJ0VGltZRIYCgdlbmRUaW1lGAcgASgJUgdlbmRUaW1lEicKBnByaWNlcxgIIAMoCzIPLmV2ZW50LnYxLlByaWNlUgZwcmljZXMSHAoJaW1hZ2VQYXRoGAkgASgJUglpbWFnZVBhdGgSFgoGYm9va2VkGAogASgIUgZib29rZWQSFgoGc3RhdHVzGAsgASgNUgZzdGF0dXMSGgoIbGF0aXR1ZGUYDCABKAFSCGxhdGl0dWRlEhwKCWxvbmdpdHVkZRgNIAEoAVIJbG9uZ2l0dWRlEhgKB2FkZHJlc3MYDiABKAlSB2FkZHJlc3MSHAoJdXNlckNvdW50GA8gASgNUgl1c2VyQ291bnQSOAoJY3JlYXRlZEF0GBAgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjgKCXVwZGF0ZWRBdBgRIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
 @$core.Deprecated('Use createPriceDescriptor instead')
 const CreatePrice$json = const {
   '1': 'CreatePrice',

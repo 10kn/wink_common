@@ -134,8 +134,9 @@ message MeetupEvent {
   double latitude = 12;
   double longitude = 13;
   string address = 14;
-  google.protobuf.Timestamp createdAt = 15;
-  google.protobuf.Timestamp updatedAt = 16;
+  uint32 userCount = 15;
+  google.protobuf.Timestamp createdAt = 16;
+  google.protobuf.Timestamp updatedAt = 17;
 }
 
 message CreatePrice {
