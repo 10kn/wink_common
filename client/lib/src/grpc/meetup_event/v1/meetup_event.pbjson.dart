@@ -189,13 +189,22 @@ const MeetupEvent$json = const {
     const {'1': 'longitude', '3': 13, '4': 1, '5': 1, '10': 'longitude'},
     const {'1': 'address', '3': 14, '4': 1, '5': 9, '10': 'address'},
     const {'1': 'userCount', '3': 15, '4': 1, '5': 13, '10': 'userCount'},
-    const {'1': 'createdAt', '3': 16, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
-    const {'1': 'updatedAt', '3': 17, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+    const {'1': 'lastMessageText', '3': 16, '4': 1, '5': 9, '9': 0, '10': 'lastMessageText', '17': true},
+    const {'1': 'lastMessageSentAt', '3': 17, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 1, '10': 'lastMessageSentAt', '17': true},
+    const {'1': 'lastSenderId', '3': 18, '4': 1, '5': 9, '9': 2, '10': 'lastSenderId', '17': true},
+    const {'1': 'unreadCount', '3': 19, '4': 1, '5': 4, '10': 'unreadCount'},
+    const {'1': 'createdAt', '3': 20, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    const {'1': 'updatedAt', '3': 21, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'updatedAt'},
+  ],
+  '8': const [
+    const {'1': '_lastMessageText'},
+    const {'1': '_lastMessageSentAt'},
+    const {'1': '_lastSenderId'},
   ],
 };
 
 /// Descriptor for `MeetupEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List meetupEventDescriptor = $convert.base64Decode('CgtNZWV0dXBFdmVudBIOCgJpZBgBIAEoCVICaWQSEgoEYXJlYRgCIAEoCVIEYXJlYRIlCgR0YWdzGAMgAygLMhEuZXZlbnQudjEuSGFzaFRhZ1IEdGFncxISCgRkYXRlGAQgASgJUgRkYXRlEiAKC2Rlc2NyaXB0aW9uGAUgASgJUgtkZXNjcmlwdGlvbhIcCglzdGFydFRpbWUYBiABKAlSCXN0YXJ0VGltZRIYCgdlbmRUaW1lGAcgASgJUgdlbmRUaW1lEicKBnByaWNlcxgIIAMoCzIPLmV2ZW50LnYxLlByaWNlUgZwcmljZXMSHAoJaW1hZ2VQYXRoGAkgASgJUglpbWFnZVBhdGgSFgoGYm9va2VkGAogASgIUgZib29rZWQSFgoGc3RhdHVzGAsgASgNUgZzdGF0dXMSGgoIbGF0aXR1ZGUYDCABKAFSCGxhdGl0dWRlEhwKCWxvbmdpdHVkZRgNIAEoAVIJbG9uZ2l0dWRlEhgKB2FkZHJlc3MYDiABKAlSB2FkZHJlc3MSHAoJdXNlckNvdW50GA8gASgNUgl1c2VyQ291bnQSOAoJY3JlYXRlZEF0GBAgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjgKCXVwZGF0ZWRBdBgRIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdA==');
+final $typed_data.Uint8List meetupEventDescriptor = $convert.base64Decode('CgtNZWV0dXBFdmVudBIOCgJpZBgBIAEoCVICaWQSEgoEYXJlYRgCIAEoCVIEYXJlYRIlCgR0YWdzGAMgAygLMhEuZXZlbnQudjEuSGFzaFRhZ1IEdGFncxISCgRkYXRlGAQgASgJUgRkYXRlEiAKC2Rlc2NyaXB0aW9uGAUgASgJUgtkZXNjcmlwdGlvbhIcCglzdGFydFRpbWUYBiABKAlSCXN0YXJ0VGltZRIYCgdlbmRUaW1lGAcgASgJUgdlbmRUaW1lEicKBnByaWNlcxgIIAMoCzIPLmV2ZW50LnYxLlByaWNlUgZwcmljZXMSHAoJaW1hZ2VQYXRoGAkgASgJUglpbWFnZVBhdGgSFgoGYm9va2VkGAogASgIUgZib29rZWQSFgoGc3RhdHVzGAsgASgNUgZzdGF0dXMSGgoIbGF0aXR1ZGUYDCABKAFSCGxhdGl0dWRlEhwKCWxvbmdpdHVkZRgNIAEoAVIJbG9uZ2l0dWRlEhgKB2FkZHJlc3MYDiABKAlSB2FkZHJlc3MSHAoJdXNlckNvdW50GA8gASgNUgl1c2VyQ291bnQSLQoPbGFzdE1lc3NhZ2VUZXh0GBAgASgJSABSD2xhc3RNZXNzYWdlVGV4dIgBARJNChFsYXN0TWVzc2FnZVNlbnRBdBgRIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAVIRbGFzdE1lc3NhZ2VTZW50QXSIAQESJwoMbGFzdFNlbmRlcklkGBIgASgJSAJSDGxhc3RTZW5kZXJJZIgBARIgCgt1bnJlYWRDb3VudBgTIAEoBFILdW5yZWFkQ291bnQSOAoJY3JlYXRlZEF0GBQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIJY3JlYXRlZEF0EjgKCXVwZGF0ZWRBdBgVIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXVwZGF0ZWRBdEISChBfbGFzdE1lc3NhZ2VUZXh0QhQKEl9sYXN0TWVzc2FnZVNlbnRBdEIPCg1fbGFzdFNlbmRlcklk');
 @$core.Deprecated('Use createPriceDescriptor instead')
 const CreatePrice$json = const {
   '1': 'CreatePrice',
@@ -800,8 +809,10 @@ const MeetupEventMessage$json = const {
     const {'1': 'meetupEventId', '3': 3, '4': 1, '5': 9, '10': 'meetupEventId'},
     const {'1': 'text', '3': 4, '4': 1, '5': 9, '10': 'text'},
     const {'1': 'sentAt', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'sentAt'},
+    const {'1': 'senderNickName', '3': 6, '4': 1, '5': 9, '10': 'senderNickName'},
+    const {'1': 'senderProfileImagePath', '3': 7, '4': 1, '5': 9, '10': 'senderProfileImagePath'},
   ],
 };
 
 /// Descriptor for `MeetupEventMessage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List meetupEventMessageDescriptor = $convert.base64Decode('ChJNZWV0dXBFdmVudE1lc3NhZ2USDgoCaWQYASABKAlSAmlkEhoKCHNlbmRlcklkGAIgASgJUghzZW5kZXJJZBIkCg1tZWV0dXBFdmVudElkGAMgASgJUg1tZWV0dXBFdmVudElkEhIKBHRleHQYBCABKAlSBHRleHQSMgoGc2VudEF0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIGc2VudEF0');
+final $typed_data.Uint8List meetupEventMessageDescriptor = $convert.base64Decode('ChJNZWV0dXBFdmVudE1lc3NhZ2USDgoCaWQYASABKAlSAmlkEhoKCHNlbmRlcklkGAIgASgJUghzZW5kZXJJZBIkCg1tZWV0dXBFdmVudElkGAMgASgJUg1tZWV0dXBFdmVudElkEhIKBHRleHQYBCABKAlSBHRleHQSMgoGc2VudEF0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIGc2VudEF0EiYKDnNlbmRlck5pY2tOYW1lGAYgASgJUg5zZW5kZXJOaWNrTmFtZRI2ChZzZW5kZXJQcm9maWxlSW1hZ2VQYXRoGAcgASgJUhZzZW5kZXJQcm9maWxlSW1hZ2VQYXRo');

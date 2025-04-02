@@ -1060,8 +1060,12 @@ class MeetupEvent extends $pb.GeneratedMessage {
     ..a<$core.double>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longitude', $pb.PbFieldType.OD)
     ..aOS(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
     ..a<$core.int>(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userCount', $pb.PbFieldType.OU3, protoName: 'userCount')
-    ..aOM<$33.Timestamp>(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
-    ..aOM<$33.Timestamp>(17, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
+    ..aOS(16, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastMessageText', protoName: 'lastMessageText')
+    ..aOM<$33.Timestamp>(17, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastMessageSentAt', protoName: 'lastMessageSentAt', subBuilder: $33.Timestamp.create)
+    ..aOS(18, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastSenderId', protoName: 'lastSenderId')
+    ..a<$fixnum.Int64>(19, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'unreadCount', $pb.PbFieldType.OU6, protoName: 'unreadCount', defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOM<$33.Timestamp>(20, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt', subBuilder: $33.Timestamp.create)
+    ..aOM<$33.Timestamp>(21, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updatedAt', protoName: 'updatedAt', subBuilder: $33.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -1082,6 +1086,10 @@ class MeetupEvent extends $pb.GeneratedMessage {
     $core.double? longitude,
     $core.String? address,
     $core.int? userCount,
+    $core.String? lastMessageText,
+    $33.Timestamp? lastMessageSentAt,
+    $core.String? lastSenderId,
+    $fixnum.Int64? unreadCount,
     $33.Timestamp? createdAt,
     $33.Timestamp? updatedAt,
   }) {
@@ -1130,6 +1138,18 @@ class MeetupEvent extends $pb.GeneratedMessage {
     }
     if (userCount != null) {
       _result.userCount = userCount;
+    }
+    if (lastMessageText != null) {
+      _result.lastMessageText = lastMessageText;
+    }
+    if (lastMessageSentAt != null) {
+      _result.lastMessageSentAt = lastMessageSentAt;
+    }
+    if (lastSenderId != null) {
+      _result.lastSenderId = lastSenderId;
+    }
+    if (unreadCount != null) {
+      _result.unreadCount = unreadCount;
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
@@ -1284,26 +1304,64 @@ class MeetupEvent extends $pb.GeneratedMessage {
   void clearUserCount() => clearField(15);
 
   @$pb.TagNumber(16)
-  $33.Timestamp get createdAt => $_getN(15);
+  $core.String get lastMessageText => $_getSZ(15);
   @$pb.TagNumber(16)
-  set createdAt($33.Timestamp v) { setField(16, v); }
+  set lastMessageText($core.String v) { $_setString(15, v); }
   @$pb.TagNumber(16)
-  $core.bool hasCreatedAt() => $_has(15);
+  $core.bool hasLastMessageText() => $_has(15);
   @$pb.TagNumber(16)
-  void clearCreatedAt() => clearField(16);
-  @$pb.TagNumber(16)
-  $33.Timestamp ensureCreatedAt() => $_ensure(15);
+  void clearLastMessageText() => clearField(16);
 
   @$pb.TagNumber(17)
-  $33.Timestamp get updatedAt => $_getN(16);
+  $33.Timestamp get lastMessageSentAt => $_getN(16);
   @$pb.TagNumber(17)
-  set updatedAt($33.Timestamp v) { setField(17, v); }
+  set lastMessageSentAt($33.Timestamp v) { setField(17, v); }
   @$pb.TagNumber(17)
-  $core.bool hasUpdatedAt() => $_has(16);
+  $core.bool hasLastMessageSentAt() => $_has(16);
   @$pb.TagNumber(17)
-  void clearUpdatedAt() => clearField(17);
+  void clearLastMessageSentAt() => clearField(17);
   @$pb.TagNumber(17)
-  $33.Timestamp ensureUpdatedAt() => $_ensure(16);
+  $33.Timestamp ensureLastMessageSentAt() => $_ensure(16);
+
+  @$pb.TagNumber(18)
+  $core.String get lastSenderId => $_getSZ(17);
+  @$pb.TagNumber(18)
+  set lastSenderId($core.String v) { $_setString(17, v); }
+  @$pb.TagNumber(18)
+  $core.bool hasLastSenderId() => $_has(17);
+  @$pb.TagNumber(18)
+  void clearLastSenderId() => clearField(18);
+
+  @$pb.TagNumber(19)
+  $fixnum.Int64 get unreadCount => $_getI64(18);
+  @$pb.TagNumber(19)
+  set unreadCount($fixnum.Int64 v) { $_setInt64(18, v); }
+  @$pb.TagNumber(19)
+  $core.bool hasUnreadCount() => $_has(18);
+  @$pb.TagNumber(19)
+  void clearUnreadCount() => clearField(19);
+
+  @$pb.TagNumber(20)
+  $33.Timestamp get createdAt => $_getN(19);
+  @$pb.TagNumber(20)
+  set createdAt($33.Timestamp v) { setField(20, v); }
+  @$pb.TagNumber(20)
+  $core.bool hasCreatedAt() => $_has(19);
+  @$pb.TagNumber(20)
+  void clearCreatedAt() => clearField(20);
+  @$pb.TagNumber(20)
+  $33.Timestamp ensureCreatedAt() => $_ensure(19);
+
+  @$pb.TagNumber(21)
+  $33.Timestamp get updatedAt => $_getN(20);
+  @$pb.TagNumber(21)
+  set updatedAt($33.Timestamp v) { setField(21, v); }
+  @$pb.TagNumber(21)
+  $core.bool hasUpdatedAt() => $_has(20);
+  @$pb.TagNumber(21)
+  void clearUpdatedAt() => clearField(21);
+  @$pb.TagNumber(21)
+  $33.Timestamp ensureUpdatedAt() => $_ensure(20);
 }
 
 class CreatePrice extends $pb.GeneratedMessage {
@@ -4831,6 +4889,8 @@ class MeetupEventMessage extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'meetupEventId', protoName: 'meetupEventId')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'text')
     ..aOM<$33.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sentAt', protoName: 'sentAt', subBuilder: $33.Timestamp.create)
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderNickName', protoName: 'senderNickName')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderProfileImagePath', protoName: 'senderProfileImagePath')
     ..hasRequiredFields = false
   ;
 
@@ -4841,6 +4901,8 @@ class MeetupEventMessage extends $pb.GeneratedMessage {
     $core.String? meetupEventId,
     $core.String? text,
     $33.Timestamp? sentAt,
+    $core.String? senderNickName,
+    $core.String? senderProfileImagePath,
   }) {
     final _result = create();
     if (id != null) {
@@ -4857,6 +4919,12 @@ class MeetupEventMessage extends $pb.GeneratedMessage {
     }
     if (sentAt != null) {
       _result.sentAt = sentAt;
+    }
+    if (senderNickName != null) {
+      _result.senderNickName = senderNickName;
+    }
+    if (senderProfileImagePath != null) {
+      _result.senderProfileImagePath = senderProfileImagePath;
     }
     return _result;
   }
@@ -4927,5 +4995,23 @@ class MeetupEventMessage extends $pb.GeneratedMessage {
   void clearSentAt() => clearField(5);
   @$pb.TagNumber(5)
   $33.Timestamp ensureSentAt() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $core.String get senderNickName => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set senderNickName($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasSenderNickName() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearSenderNickName() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get senderProfileImagePath => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set senderProfileImagePath($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasSenderProfileImagePath() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearSenderProfileImagePath() => clearField(7);
 }
 
