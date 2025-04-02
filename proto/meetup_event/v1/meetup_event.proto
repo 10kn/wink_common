@@ -135,8 +135,12 @@ message MeetupEvent {
   double longitude = 13;
   string address = 14;
   uint32 userCount = 15;
-  google.protobuf.Timestamp createdAt = 16;
-  google.protobuf.Timestamp updatedAt = 17;
+  optional string lastMessageText = 16;
+  optional google.protobuf.Timestamp lastMessageSentAt = 17;
+  optional string lastSenderId = 18;
+  uint64 unreadCount = 19;
+  google.protobuf.Timestamp createdAt = 20;
+  google.protobuf.Timestamp updatedAt = 21;
 }
 
 message CreatePrice {
@@ -428,9 +432,11 @@ message GetMeetupEventMessagesResponse {
 }
 
 message MeetupEventMessage {
-  string                    id            = 1;
-  string                    senderId      = 2;
-  string                    meetupEventId = 3;
-  string                    text          = 4;
-  google.protobuf.Timestamp sentAt        = 5;
+  string                    id                     = 1;
+  string                    senderId               = 2;
+  string                    meetupEventId          = 3;
+  string                    text                   = 4;
+  google.protobuf.Timestamp sentAt                 = 5;
+  string                    senderNickName         = 6;
+  string                    senderProfileImagePath = 7;
 }
