@@ -809,6 +809,7 @@ class GetOwnUserProfileResponse extends $pb.GeneratedMessage {
     ..aOB(26, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hiddenSuperWink', protoName: 'hiddenSuperWink')
     ..aOS(27, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'referralCode', protoName: 'referralCode')
     ..aOS(28, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'friendReferralCode', protoName: 'friendReferralCode')
+    ..aOS(29, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'phoneNumber', protoName: 'phoneNumber')
     ..hasRequiredFields = false
   ;
 
@@ -842,6 +843,7 @@ class GetOwnUserProfileResponse extends $pb.GeneratedMessage {
     $core.bool? hiddenSuperWink,
     $core.String? referralCode,
     $core.String? friendReferralCode,
+    $core.String? phoneNumber,
   }) {
     final _result = create();
     if (userId != null) {
@@ -927,6 +929,9 @@ class GetOwnUserProfileResponse extends $pb.GeneratedMessage {
     }
     if (friendReferralCode != null) {
       _result.friendReferralCode = friendReferralCode;
+    }
+    if (phoneNumber != null) {
+      _result.phoneNumber = phoneNumber;
     }
     return _result;
   }
@@ -1212,6 +1217,15 @@ class GetOwnUserProfileResponse extends $pb.GeneratedMessage {
   $core.bool hasFriendReferralCode() => $_has(27);
   @$pb.TagNumber(28)
   void clearFriendReferralCode() => clearField(28);
+
+  @$pb.TagNumber(29)
+  $core.String get phoneNumber => $_getSZ(28);
+  @$pb.TagNumber(29)
+  set phoneNumber($core.String v) { $_setString(28, v); }
+  @$pb.TagNumber(29)
+  $core.bool hasPhoneNumber() => $_has(28);
+  @$pb.TagNumber(29)
+  void clearPhoneNumber() => clearField(29);
 }
 
 class GetAdminUserProfileRequest extends $pb.GeneratedMessage {
