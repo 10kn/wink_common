@@ -125,6 +125,7 @@ message GetOwnUserProfileResponse {
   bool                            hiddenSuperWink        = 26;
   string                          referralCode           = 27;
   string                          friendReferralCode     = 28;
+  string                          phoneNumber            = 29;
 }
 
 message GetAdminUserProfileRequest {
