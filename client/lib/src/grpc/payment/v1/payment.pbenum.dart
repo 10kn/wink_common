@@ -10,18 +10,18 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class ConsumablePlan extends $pb.ProtobufEnum {
-  static const ConsumablePlan CONSUMABLE_PLAN_UNKNOWN = ConsumablePlan._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CONSUMABLE_PLAN_UNKNOWN');
-  static const ConsumablePlan CONSUMABLE_PLAN_10_COIN = ConsumablePlan._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CONSUMABLE_PLAN_10_COIN');
-  static const ConsumablePlan CONSUMABLE_PLAN_30_COIN = ConsumablePlan._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CONSUMABLE_PLAN_30_COIN');
-  static const ConsumablePlan CONSUMABLE_PLAN_100_COIN = ConsumablePlan._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CONSUMABLE_PLAN_100_COIN');
-  static const ConsumablePlan CONSUMABLE_PLAN_300_COIN = ConsumablePlan._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'CONSUMABLE_PLAN_300_COIN');
+  static const ConsumablePlan EVENT_PLAN_UNKNOWN_COIN = ConsumablePlan._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_UNKNOWN_COIN');
+  static const ConsumablePlan EVENT_PLAN_10_COIN = ConsumablePlan._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_10_COIN');
+  static const ConsumablePlan EVENT_PLAN_30_COIN = ConsumablePlan._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_30_COIN');
+  static const ConsumablePlan EVENT_PLAN_100_COIN = ConsumablePlan._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_100_COIN');
+  static const ConsumablePlan EVENT_PLAN_300_COIN = ConsumablePlan._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_300_COIN');
 
   static const $core.List<ConsumablePlan> values = <ConsumablePlan> [
-    CONSUMABLE_PLAN_UNKNOWN,
-    CONSUMABLE_PLAN_10_COIN,
-    CONSUMABLE_PLAN_30_COIN,
-    CONSUMABLE_PLAN_100_COIN,
-    CONSUMABLE_PLAN_300_COIN,
+    EVENT_PLAN_UNKNOWN_COIN,
+    EVENT_PLAN_10_COIN,
+    EVENT_PLAN_30_COIN,
+    EVENT_PLAN_100_COIN,
+    EVENT_PLAN_300_COIN,
   ];
 
   static final $core.Map<$core.int, ConsumablePlan> _byValue = $pb.ProtobufEnum.initByValue(values);
@@ -31,18 +31,18 @@ class ConsumablePlan extends $pb.ProtobufEnum {
 }
 
 class SubscriptionPlan extends $pb.ProtobufEnum {
-  static const SubscriptionPlan SUBSCRIPTION_PLAN_UNKNOWN = SubscriptionPlan._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SUBSCRIPTION_PLAN_UNKNOWN');
-  static const SubscriptionPlan SUBSCRIPTION_PLAN_1_MONTH = SubscriptionPlan._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SUBSCRIPTION_PLAN_1_MONTH');
-  static const SubscriptionPlan SUBSCRIPTION_PLAN_3_MONTH = SubscriptionPlan._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SUBSCRIPTION_PLAN_3_MONTH');
-  static const SubscriptionPlan SUBSCRIPTION_PLAN_6_MONTH = SubscriptionPlan._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SUBSCRIPTION_PLAN_6_MONTH');
-  static const SubscriptionPlan SUBSCRIPTION_PLAN_12_MONTH = SubscriptionPlan._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SUBSCRIPTION_PLAN_12_MONTH');
+  static const SubscriptionPlan EVENT_PLAN_UNKNOWN_MONTH = SubscriptionPlan._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_UNKNOWN_MONTH');
+  static const SubscriptionPlan EVENT_PLAN_1_MONTH = SubscriptionPlan._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_1_MONTH');
+  static const SubscriptionPlan EVENT_PLAN_3_MONTH = SubscriptionPlan._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_3_MONTH');
+  static const SubscriptionPlan EVENT_PLAN_6_MONTH = SubscriptionPlan._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_6_MONTH');
+  static const SubscriptionPlan EVENT_PLAN_12_MONTH = SubscriptionPlan._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'EVENT_PLAN_12_MONTH');
 
   static const $core.List<SubscriptionPlan> values = <SubscriptionPlan> [
-    SUBSCRIPTION_PLAN_UNKNOWN,
-    SUBSCRIPTION_PLAN_1_MONTH,
-    SUBSCRIPTION_PLAN_3_MONTH,
-    SUBSCRIPTION_PLAN_6_MONTH,
-    SUBSCRIPTION_PLAN_12_MONTH,
+    EVENT_PLAN_UNKNOWN_MONTH,
+    EVENT_PLAN_1_MONTH,
+    EVENT_PLAN_3_MONTH,
+    EVENT_PLAN_6_MONTH,
+    EVENT_PLAN_12_MONTH,
   ];
 
   static final $core.Map<$core.int, SubscriptionPlan> _byValue = $pb.ProtobufEnum.initByValue(values);

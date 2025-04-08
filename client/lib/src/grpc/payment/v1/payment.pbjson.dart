@@ -12,30 +12,30 @@ import 'dart:typed_data' as $typed_data;
 const ConsumablePlan$json = const {
   '1': 'ConsumablePlan',
   '2': const [
-    const {'1': 'CONSUMABLE_PLAN_UNKNOWN', '2': 0},
-    const {'1': 'CONSUMABLE_PLAN_10_COIN', '2': 1},
-    const {'1': 'CONSUMABLE_PLAN_30_COIN', '2': 2},
-    const {'1': 'CONSUMABLE_PLAN_100_COIN', '2': 3},
-    const {'1': 'CONSUMABLE_PLAN_300_COIN', '2': 4},
+    const {'1': 'EVENT_PLAN_UNKNOWN_COIN', '2': 0},
+    const {'1': 'EVENT_PLAN_10_COIN', '2': 1},
+    const {'1': 'EVENT_PLAN_30_COIN', '2': 2},
+    const {'1': 'EVENT_PLAN_100_COIN', '2': 3},
+    const {'1': 'EVENT_PLAN_300_COIN', '2': 4},
   ],
 };
 
 /// Descriptor for `ConsumablePlan`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List consumablePlanDescriptor = $convert.base64Decode('Cg5Db25zdW1hYmxlUGxhbhIbChdDT05TVU1BQkxFX1BMQU5fVU5LTk9XThAAEhsKF0NPTlNVTUFCTEVfUExBTl8xMF9DT0lOEAESGwoXQ09OU1VNQUJMRV9QTEFOXzMwX0NPSU4QAhIcChhDT05TVU1BQkxFX1BMQU5fMTAwX0NPSU4QAxIcChhDT05TVU1BQkxFX1BMQU5fMzAwX0NPSU4QBA==');
+final $typed_data.Uint8List consumablePlanDescriptor = $convert.base64Decode('Cg5Db25zdW1hYmxlUGxhbhIbChdFVkVOVF9QTEFOX1VOS05PV05fQ09JThAAEhYKEkVWRU5UX1BMQU5fMTBfQ09JThABEhYKEkVWRU5UX1BMQU5fMzBfQ09JThACEhcKE0VWRU5UX1BMQU5fMTAwX0NPSU4QAxIXChNFVkVOVF9QTEFOXzMwMF9DT0lOEAQ=');
 @$core.Deprecated('Use subscriptionPlanDescriptor instead')
 const SubscriptionPlan$json = const {
   '1': 'SubscriptionPlan',
   '2': const [
-    const {'1': 'SUBSCRIPTION_PLAN_UNKNOWN', '2': 0},
-    const {'1': 'SUBSCRIPTION_PLAN_1_MONTH', '2': 1},
-    const {'1': 'SUBSCRIPTION_PLAN_3_MONTH', '2': 2},
-    const {'1': 'SUBSCRIPTION_PLAN_6_MONTH', '2': 3},
-    const {'1': 'SUBSCRIPTION_PLAN_12_MONTH', '2': 4},
+    const {'1': 'EVENT_PLAN_UNKNOWN_MONTH', '2': 0},
+    const {'1': 'EVENT_PLAN_1_MONTH', '2': 1},
+    const {'1': 'EVENT_PLAN_3_MONTH', '2': 2},
+    const {'1': 'EVENT_PLAN_6_MONTH', '2': 3},
+    const {'1': 'EVENT_PLAN_12_MONTH', '2': 4},
   ],
 };
 
 /// Descriptor for `SubscriptionPlan`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List subscriptionPlanDescriptor = $convert.base64Decode('ChBTdWJzY3JpcHRpb25QbGFuEh0KGVNVQlNDUklQVElPTl9QTEFOX1VOS05PV04QABIdChlTVUJTQ1JJUFRJT05fUExBTl8xX01PTlRIEAESHQoZU1VCU0NSSVBUSU9OX1BMQU5fM19NT05USBACEh0KGVNVQlNDUklQVElPTl9QTEFOXzZfTU9OVEgQAxIeChpTVUJTQ1JJUFRJT05fUExBTl8xMl9NT05USBAE');
+final $typed_data.Uint8List subscriptionPlanDescriptor = $convert.base64Decode('ChBTdWJzY3JpcHRpb25QbGFuEhwKGEVWRU5UX1BMQU5fVU5LTk9XTl9NT05USBAAEhYKEkVWRU5UX1BMQU5fMV9NT05USBABEhYKEkVWRU5UX1BMQU5fM19NT05USBACEhYKEkVWRU5UX1BMQU5fNl9NT05USBADEhcKE0VWRU5UX1BMQU5fMTJfTU9OVEgQBA==');
 @$core.Deprecated('Use oneDayPlanEnumDescriptor instead')
 const OneDayPlanEnum$json = const {
   '1': 'OneDayPlanEnum',

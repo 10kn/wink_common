@@ -252,7 +252,7 @@ class GetOwnMemberStatusResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetOwnMemberStatusResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'user.v1'), createEmptyInstance: create)
     ..e<MemberStatus>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.OE, defaultOrMaker: MemberStatus.MEMBER_STATUS_UNKNOWN, valueOf: MemberStatus.valueOf, enumValues: MemberStatus.values)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'displayName', protoName: 'displayName')
-    ..e<$3.SubscriptionPlan>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subscriptionPlan', $pb.PbFieldType.OE, protoName: 'subscriptionPlan', defaultOrMaker: $3.SubscriptionPlan.SUBSCRIPTION_PLAN_UNKNOWN, valueOf: $3.SubscriptionPlan.valueOf, enumValues: $3.SubscriptionPlan.values)
+    ..e<$3.SubscriptionPlan>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subscriptionPlan', $pb.PbFieldType.OE, protoName: 'subscriptionPlan', defaultOrMaker: $3.SubscriptionPlan.EVENT_PLAN_UNKNOWN_MONTH, valueOf: $3.SubscriptionPlan.valueOf, enumValues: $3.SubscriptionPlan.values)
     ..aOM<$33.Timestamp>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currentPeriodEnd', protoName: 'currentPeriodEnd', subBuilder: $33.Timestamp.create)
     ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cancelAtPeriodEnd', protoName: 'cancelAtPeriodEnd')
     ..hasRequiredFields = false

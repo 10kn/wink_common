@@ -167,7 +167,7 @@ class SyncIapResponse extends $pb.GeneratedMessage {
 
 class BuyConsumableIapRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BuyConsumableIapRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'payment.v1'), createEmptyInstance: create)
-    ..e<$3.ConsumablePlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'consumablePlanId', $pb.PbFieldType.OE, protoName: 'consumablePlanId', defaultOrMaker: $3.ConsumablePlan.CONSUMABLE_PLAN_UNKNOWN, valueOf: $3.ConsumablePlan.valueOf, enumValues: $3.ConsumablePlan.values)
+    ..e<$3.ConsumablePlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'consumablePlanId', $pb.PbFieldType.OE, protoName: 'consumablePlanId', defaultOrMaker: $3.ConsumablePlan.EVENT_PLAN_UNKNOWN_COIN, valueOf: $3.ConsumablePlan.valueOf, enumValues: $3.ConsumablePlan.values)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nonSubscriptionId', protoName: 'nonSubscriptionId')
     ..hasRequiredFields = false
   ;
