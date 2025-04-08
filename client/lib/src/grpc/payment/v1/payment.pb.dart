@@ -16,7 +16,7 @@ export 'payment.pbenum.dart';
 
 class CoinPlan extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CoinPlan', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'payment.v1'), createEmptyInstance: create)
-    ..e<ConsumablePlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'consumablePlanId', $pb.PbFieldType.OE, protoName: 'consumablePlanId', defaultOrMaker: ConsumablePlan.CONSUMABLE_PLAN_UNKNOWN, valueOf: ConsumablePlan.valueOf, enumValues: ConsumablePlan.values)
+    ..e<ConsumablePlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'consumablePlanId', $pb.PbFieldType.OE, protoName: 'consumablePlanId', defaultOrMaker: ConsumablePlan.EVENT_PLAN_UNKNOWN_COIN, valueOf: ConsumablePlan.valueOf, enumValues: ConsumablePlan.values)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'price', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
@@ -91,7 +91,7 @@ class CoinPlan extends $pb.GeneratedMessage {
 
 class MemberPlan extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MemberPlan', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'payment.v1'), createEmptyInstance: create)
-    ..e<SubscriptionPlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subscriptionPlanId', $pb.PbFieldType.OE, protoName: 'subscriptionPlanId', defaultOrMaker: SubscriptionPlan.SUBSCRIPTION_PLAN_UNKNOWN, valueOf: SubscriptionPlan.valueOf, enumValues: SubscriptionPlan.values)
+    ..e<SubscriptionPlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subscriptionPlanId', $pb.PbFieldType.OE, protoName: 'subscriptionPlanId', defaultOrMaker: SubscriptionPlan.EVENT_PLAN_UNKNOWN_MONTH, valueOf: SubscriptionPlan.valueOf, enumValues: SubscriptionPlan.values)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'price', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
@@ -605,7 +605,7 @@ class PaymentIntent extends $pb.GeneratedMessage {
 
 class BuyConsumableRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BuyConsumableRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'payment.v1'), createEmptyInstance: create)
-    ..e<ConsumablePlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'consumablePlanId', $pb.PbFieldType.OE, protoName: 'consumablePlanId', defaultOrMaker: ConsumablePlan.CONSUMABLE_PLAN_UNKNOWN, valueOf: ConsumablePlan.valueOf, enumValues: ConsumablePlan.values)
+    ..e<ConsumablePlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'consumablePlanId', $pb.PbFieldType.OE, protoName: 'consumablePlanId', defaultOrMaker: ConsumablePlan.EVENT_PLAN_UNKNOWN_COIN, valueOf: ConsumablePlan.valueOf, enumValues: ConsumablePlan.values)
     ..e<PaymentMethodType>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paymentMethodType', $pb.PbFieldType.OE, protoName: 'paymentMethodType', defaultOrMaker: PaymentMethodType.PAYMENT_METHOD_TYPE_UNKNOWN, valueOf: PaymentMethodType.valueOf, enumValues: PaymentMethodType.values)
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paymentMethodId', protoName: 'paymentMethodId')
     ..hasRequiredFields = false
@@ -743,7 +743,7 @@ class BuyConsumableResponse extends $pb.GeneratedMessage {
 
 class BuyConsumableWithRegisteredMethodRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BuyConsumableWithRegisteredMethodRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'payment.v1'), createEmptyInstance: create)
-    ..e<ConsumablePlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'consumablePlanId', $pb.PbFieldType.OE, protoName: 'consumablePlanId', defaultOrMaker: ConsumablePlan.CONSUMABLE_PLAN_UNKNOWN, valueOf: ConsumablePlan.valueOf, enumValues: ConsumablePlan.values)
+    ..e<ConsumablePlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'consumablePlanId', $pb.PbFieldType.OE, protoName: 'consumablePlanId', defaultOrMaker: ConsumablePlan.EVENT_PLAN_UNKNOWN_COIN, valueOf: ConsumablePlan.valueOf, enumValues: ConsumablePlan.values)
     ..hasRequiredFields = false
   ;
 
@@ -853,7 +853,7 @@ class BuyConsumableWithRegisteredMethodResponse extends $pb.GeneratedMessage {
 
 class BuySubscriptionRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BuySubscriptionRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'payment.v1'), createEmptyInstance: create)
-    ..e<SubscriptionPlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subscriptionPlanId', $pb.PbFieldType.OE, protoName: 'subscriptionPlanId', defaultOrMaker: SubscriptionPlan.SUBSCRIPTION_PLAN_UNKNOWN, valueOf: SubscriptionPlan.valueOf, enumValues: SubscriptionPlan.values)
+    ..e<SubscriptionPlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subscriptionPlanId', $pb.PbFieldType.OE, protoName: 'subscriptionPlanId', defaultOrMaker: SubscriptionPlan.EVENT_PLAN_UNKNOWN_MONTH, valueOf: SubscriptionPlan.valueOf, enumValues: SubscriptionPlan.values)
     ..e<PaymentMethodType>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paymentMethodType', $pb.PbFieldType.OE, protoName: 'paymentMethodType', defaultOrMaker: PaymentMethodType.PAYMENT_METHOD_TYPE_UNKNOWN, valueOf: PaymentMethodType.valueOf, enumValues: PaymentMethodType.values)
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paymentMethodId', protoName: 'paymentMethodId')
     ..hasRequiredFields = false
@@ -991,7 +991,7 @@ class BuySubscriptionResponse extends $pb.GeneratedMessage {
 
 class BuySubscriptionWithRegisteredMethodRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BuySubscriptionWithRegisteredMethodRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'payment.v1'), createEmptyInstance: create)
-    ..e<SubscriptionPlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subscriptionPlanId', $pb.PbFieldType.OE, protoName: 'subscriptionPlanId', defaultOrMaker: SubscriptionPlan.SUBSCRIPTION_PLAN_UNKNOWN, valueOf: SubscriptionPlan.valueOf, enumValues: SubscriptionPlan.values)
+    ..e<SubscriptionPlan>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subscriptionPlanId', $pb.PbFieldType.OE, protoName: 'subscriptionPlanId', defaultOrMaker: SubscriptionPlan.EVENT_PLAN_UNKNOWN_MONTH, valueOf: SubscriptionPlan.valueOf, enumValues: SubscriptionPlan.values)
     ..hasRequiredFields = false
   ;
 

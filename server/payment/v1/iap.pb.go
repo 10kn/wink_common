@@ -195,7 +195,7 @@ func (x *BuyConsumableIapRequest) GetConsumablePlanId() ConsumablePlan {
 	if x != nil {
 		return x.ConsumablePlanId
 	}
-	return ConsumablePlan_CONSUMABLE_PLAN_UNKNOWN
+	return ConsumablePlan_EVENT_PLAN_UNKNOWN_COIN
 }
 
 func (x *BuyConsumableIapRequest) GetNonSubscriptionId() string {
