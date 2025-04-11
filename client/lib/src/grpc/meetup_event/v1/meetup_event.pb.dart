@@ -4616,6 +4616,7 @@ class UserInfo extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nickName', protoName: 'nickName')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profileImagePath', protoName: 'profileImagePath')
+    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'age', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -4624,6 +4625,7 @@ class UserInfo extends $pb.GeneratedMessage {
     $core.String? userId,
     $core.String? nickName,
     $core.String? profileImagePath,
+    $core.int? age,
   }) {
     final _result = create();
     if (userId != null) {
@@ -4634,6 +4636,9 @@ class UserInfo extends $pb.GeneratedMessage {
     }
     if (profileImagePath != null) {
       _result.profileImagePath = profileImagePath;
+    }
+    if (age != null) {
+      _result.age = age;
     }
     return _result;
   }
@@ -4684,6 +4689,15 @@ class UserInfo extends $pb.GeneratedMessage {
   $core.bool hasProfileImagePath() => $_has(2);
   @$pb.TagNumber(3)
   void clearProfileImagePath() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get age => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set age($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasAge() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearAge() => clearField(4);
 }
 
 class SendMeetupEventMessageRequest extends $pb.GeneratedMessage {
