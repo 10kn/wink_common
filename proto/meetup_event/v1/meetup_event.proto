@@ -412,6 +412,7 @@ message UserInfo {
   string                    userId           = 1;
   string                    nickName         = 2;
   string                    profileImagePath = 3;
+  uint32                    age              = 4;
 }
 
 message SendMeetupEventMessageRequest {

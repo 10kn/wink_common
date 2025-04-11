@@ -754,11 +754,12 @@ const UserInfo$json = const {
     const {'1': 'userId', '3': 1, '4': 1, '5': 9, '10': 'userId'},
     const {'1': 'nickName', '3': 2, '4': 1, '5': 9, '10': 'nickName'},
     const {'1': 'profileImagePath', '3': 3, '4': 1, '5': 9, '10': 'profileImagePath'},
+    const {'1': 'age', '3': 4, '4': 1, '5': 13, '10': 'age'},
   ],
 };
 
 /// Descriptor for `UserInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userInfoDescriptor = $convert.base64Decode('CghVc2VySW5mbxIWCgZ1c2VySWQYASABKAlSBnVzZXJJZBIaCghuaWNrTmFtZRgCIAEoCVIIbmlja05hbWUSKgoQcHJvZmlsZUltYWdlUGF0aBgDIAEoCVIQcHJvZmlsZUltYWdlUGF0aA==');
+final $typed_data.Uint8List userInfoDescriptor = $convert.base64Decode('CghVc2VySW5mbxIWCgZ1c2VySWQYASABKAlSBnVzZXJJZBIaCghuaWNrTmFtZRgCIAEoCVIIbmlja05hbWUSKgoQcHJvZmlsZUltYWdlUGF0aBgDIAEoCVIQcHJvZmlsZUltYWdlUGF0aBIQCgNhZ2UYBCABKA1SA2FnZQ==');
 @$core.Deprecated('Use sendMeetupEventMessageRequestDescriptor instead')
 const SendMeetupEventMessageRequest$json = const {
   '1': 'SendMeetupEventMessageRequest',
